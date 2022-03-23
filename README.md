@@ -35,10 +35,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Using Docker
 
-ルートディレクトで下記のコマンドを叩く
+ルートディレクトリで下記のコマンドを叩く
+
+ビルド
 
 ```bash
-Build your container: docker build -t d-anime-mylist-frontend
+docker build -t d-anime-mylist-frontend
 ```
 
 ```bash
