@@ -43,6 +43,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 docker build -t d-anime-mylist-frontend .
 ```
 
+実行
+
 ```bash
 docker run -p 5000:5000 d-anime-mylist-frontend
 ```
