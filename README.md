@@ -40,7 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ビルド
 
 ```bash
-docker build -t d-anime-mylist-frontend
+docker build -t d-anime-mylist-frontend .
 ```
 
 ```bash
