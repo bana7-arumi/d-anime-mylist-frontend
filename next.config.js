@@ -7,4 +7,7 @@ module.exports = {
   experimental: {
     outputStandalone: true,
   },
+  images: {
+    domains: ["cs1.anime.dmkt-sp.jp"],
+  },
 };
