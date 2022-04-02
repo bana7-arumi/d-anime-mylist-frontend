@@ -2,9 +2,9 @@ import LogoIcon from "./LogoIcon";
 
 export default function Header() {
   return (
-    <div className="p-8 bg-primary-orange">
+    <div className="p-8 bg-primary-orange shadow-md">
       <div>
-        <div class="flex justify-center">
+        <div className="flex justify-center">
           <h1 className="my-32  text-secondary-cyan text-6xl font-bold">
             What would you like to embed?
           </h1>
@@ -14,7 +14,7 @@ export default function Header() {
           <input
             className="shadow appearance-none border rounded w-1/2 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
-            type="text"
+            type="search"
             placeholder="マイリストのURLを入力"
           ></input>
         </div>
