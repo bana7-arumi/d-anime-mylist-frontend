@@ -18,7 +18,7 @@ export default function Header() {
               type="search"
               placeholder="マイリストのURLを入力"
             ></input>
-            <div className="absolute text-center w-1/2 flex justify-end px-2">
+            {/* <div className="bg-secondary-cyan absolute right-0 flex items-center pointer-events-none">
               <svg
                 width="48"
                 height="48"
@@ -31,7 +31,7 @@ export default function Header() {
                   fill="#F29D38"
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
