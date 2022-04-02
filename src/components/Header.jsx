@@ -14,7 +14,7 @@ export default function Header() {
           <div className="flex justify-center p-2 mb-2">
             <input
               className="shadow appearance-none border rounded w-1/2 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
+              id="search"
               type="search"
               placeholder="マイリストのURLを入力"
             ></input>
