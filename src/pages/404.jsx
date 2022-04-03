@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Router from "next/router";
 
 export default function Page404() {
   // https://chicodeza.com/freeitems/saikoro-illust.html
@@ -35,7 +36,10 @@ export default function Page404() {
             ))}
           </div>
           <div>
-            <button className="px-8 py-2 bg-primary-variant-orange text-white font-semibold hover:bg-amber-400">
+            <button
+              onClick={() => Router.push("/")}
+              className="px-8 py-2 bg-primary-variant-orange text-white font-semibold hover:bg-amber-400"
+            >
               トップに戻る
             </button>
           </div>
