@@ -25,28 +25,44 @@ export default function MylistId() {
     })();
   }, [id]);
   return (
-    <div className="text-white bg-primary-orange font-sans font-serif font-mono min-h-screen relative flex flex-col font-extralight text-sm block bg-gradient-to-bl ">
-      <div className="absolute inset-0 flex flex-col block">
+    <div className="ae af ah ai aj ak al am an">
+      <div className="ao apqrs at ai aj">
         {/* 選択されているリスト要素 */}
-        <div></div>
+        <div className="ai au ah av">
+          {/* 画像 */}
+          <div>
+
+          </div>
+          {/* アニメタイトル */}
+          <div>
+
+          </div>
+        </div>
         {/* アニメリスト */}
-        <div className="block grow shrink overflow-hidden">
-          <div className="overflow-scroll h-full">
-            <table className="relative table-auto table box-border indent-0 border-separate border-grey w-full ">
+        <div className="ah dg dh">
+          <div className="di b4">
+            <table className="ah dj b3">
               <tbody>
                 {mylistList.map((data, index) => (
                   <tr
                     id={index}
-                    className="cursor-pointer overflow-hidden text-white leading-5 select-none opacity-100 border-inherit hover:bg-primary-orange/20 "
+                    className="e3 an bi d7 cs dk dl"
                   >
                     {/* index番号 */}
-                    <td className="pt-3 pr-6 pb-3 pl-8 min-w-14 text-white opacity-60 table-cell">
+                    <td className="ae dm d9 dn do dk">
                       {index + 1}
                     </td>
-                    {/* アニメタイトル */}
-                    <td className="py-1.5 w-full table-cell">
-                      <div block>
-                        <span>{data.title}</span>
+                    {/* アニメ */}
+                    <td className="ah dq">
+                      <div className="ah dr b3">
+                        {/* アニメタイトル */}
+                        <div className="ao ap ds b3 bstu bv">
+                          <span dir="auto">{data.title}</span>
+                        </div>
+                        {/* 話数 */}
+                        <div className="ao du ds b3 bstu ae dp">
+                          <span dir="auto">全15話</span>
+                        </div>
                       </div>
                     </td>
                   </tr>

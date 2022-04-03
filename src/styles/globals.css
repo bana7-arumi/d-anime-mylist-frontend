@@ -1,3 +1,172 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div {
+	@apply block;
+}
+
+td {
+	@apply table-cell;
+	vertical-align: inherit;
+}
+
+/* ---a?--- */
+.ae {
+	color: rgb(255, 255, 255);
+}
+
+.af {
+	@apply bg-primary-orange;
+}
+
+.ah {
+	@apply relative;
+}
+
+.ai {
+	@apply flex;
+}
+
+.aj {
+	@apply flex-col;
+}
+
+.ak {
+	@apply h-screen;
+}
+
+.al {
+	@apply font-extralight;
+}
+
+.am {
+	font-size: 14px;
+}
+
+.an {
+	line-height: 19px;
+}
+
+.ao {
+	@apply absolute;
+}
+
+.ap {
+	@apply top-0;
+}
+
+.apqrs {
+	@apply inset-0;
+}
+
+.at {
+	background: linear-gradient(rgba(236, 159, 5, 0.5), rgba(255, 78, 0, 0));
+}
+
+.au {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	@apply flex-row;
+}
+
+.av {
+	text-shadow: rgb(0 0 0 / 40%) 0px 0px 2px;
+}
+
+/* ---b?--- */
+.bi {
+	@apply cursor-pointer;
+}
+
+.bstu {
+	@apply truncate;
+}
+
+.bv {
+	@apply font-semibold;
+}
+
+.b3 {
+	@apply w-full;
+}
+
+.b4 {
+	@apply h-full;
+}
+
+/* ---c?--- */
+.cs {
+	@apply select-none;
+}
+
+/* ---d?--- */
+.dg {
+	@apply flex-1;
+}
+
+.dh {
+	@apply overflow-y-hidden;
+}
+
+.di {
+	@apply overflow-y-auto;
+}
+
+.dj {
+	@apply border-collapse;
+}
+
+.dk {
+	@apply opacity-100;
+}
+
+/* ---hover--- */
+.dl:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dm {
+	padding: 6px 8px 6px 16px;
+}
+
+.dn {
+	width: 1%;
+}
+
+.do {
+	min-width: 14px;
+}
+
+.dp {
+	@apply opacity-60;
+}
+
+.dq {
+	padding: 6px 0px;
+}
+
+.dr {
+	height: 38px;
+}
+
+.ds {
+	height: 19px;
+}
+
+.du {
+	top: 19px;
+}
+
+.d7 {
+	@apply align-top;
+}
+
+.d9 {
+	font-feature-settings: "tnum";
+}
+
+/* ---e?--- */
+.e3:active {
+	color: rgb(30, 215, 96);
+}
