@@ -74,7 +74,47 @@ td {
 	text-shadow: rgb(0 0 0 / 40%) 0px 0px 2px;
 }
 
+.aw {
+	@apply h-20;
+}
+
+.ax {
+	@apply w-20;
+}
+
 /* ---b?--- */
+.bk {
+	flex: 2 1 0%;
+}
+
+.bl {
+	min-width: 66.6666vw;
+}
+
+.bm {
+	flex: 100 1 0%;
+}
+
+.bn {
+	min-width: 0px;
+}
+
+.bo {
+	@apply block;
+}
+
+.bp {
+	margin: 8px;
+}
+
+.bq {
+	@apply no-underline;
+}
+
+.br {
+	@apply text-inherit;
+}
+
 .bi {
 	@apply cursor-pointer;
 }
@@ -83,9 +123,26 @@ td {
 	@apply truncate;
 }
 
+.bt {
+	text-overflow: ellipsis;
+}
+
+.bu {
+	overflow: hidden;
+}
+
 .bv {
 	@apply font-semibold;
 }
+
+.bw {
+	font-size: 14px;
+}
+
+.bx {
+	line-height: 19px;
+}
+
 
 .b3 {
 	@apply w-full;
@@ -93,6 +150,14 @@ td {
 
 .b4 {
 	@apply h-full;
+}
+
+.b5 {
+	min-width: 80px;
+}
+
+.b6 {
+	min-height: 80px;
 }
 
 /* ---c?--- */
@@ -167,6 +232,9 @@ td {
 }
 
 /* ---e?--- */
-.e3:active {
-	color: rgb(30, 215, 96);
+.e3 {
+	color:rgb(30, 215, 96);
 }
+
+
+
