@@ -75,11 +75,11 @@ td {
 }
 
 .aw {
-	@apply h-20;
+	height: 100px;
 }
 
 .ax {
-	@apply w-20;
+	width: 200px;
 }
 
 /* ---b?--- */
@@ -234,6 +234,12 @@ td {
 /* ---e?--- */
 .e3 {
 	color:rgb(30, 215, 96);
+}
+
+img {
+	object-fit: cover;
+	height: 100px;
+	width: 200px;
 }
 
 

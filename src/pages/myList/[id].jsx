@@ -11,7 +11,7 @@ export default function MylistId() {
   //API GET
   const [mylistList, setMylistList] = useState([]);
   const [mylistInfo, setMylistInfo] = useState({});
-  const [animeInfo, setAnimeInfo] = useState(mylistList[0]);
+  const [animeInfo, setAnimeInfo] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -21,12 +21,17 @@ export default function MylistId() {
         console.log(res.data.mylist);
         setMylistList(res.data.mylist);
         setMylistInfo(res.data);
+        setAnimeInfo(res.data.mylist[0]);
       } catch (err) {
         console.log(err);
       }
     })();
   }, [id]);
-  
+
+  function ClickAct(index) {
+    setAnimeInfo(mylistList[index]);
+  }
+
   console.log(animeInfo);
 
   const animeList = (
@@ -35,11 +40,10 @@ export default function MylistId() {
         <tr
           key={data.id}
           className="an bi d7 cs dk dl"
+          onClick={() => ClickAct(index)}
         >
           {/* index番号 */}
-          <td className="ae dm d9 dn do dk">
-            {index + 1}
-          </td>
+          <td className="ae dm d9 dn do dk">{index + 1}</td>
           {/* アニメ */}
           <td className="ah dq">
             <div className="ah dr b3">
@@ -66,16 +70,27 @@ export default function MylistId() {
           {/* 画像 */}
           <div className="ah aw ax">
             <div className="ah b3 b4 b5 b6">
-
+              {/* <Image
+                src={animeInfo.image}
+                alt={animeInfo.title}
+                height={100}
+                width={200}
+              /> */}
+              <img src={animeInfo.image} alt={animeInfo.title} />
             </div>
           </div>
           {/* アニメタイトル */}
-          <div className="ah bk bl">
+          <div className="ah bk bl bg-white text-black">
             <div className="ai">
               <div className="ah bm b6 bn">
                 <a className="bo bp bq br al bstu bi">
-                  <div className="ae bt bu bv bw bx">
-                    <span dir="auto">{}</span>
+                  <div className="bt bu bv bw bx">
+                    <span dir="auto">
+                      {animeInfo.title + " " + animeInfo.stories}
+                    </span>
+                  </div>
+                  <div className="bt bu dp">
+                    <span dir="auto">{"第1話　" + animeInfo.first}</span>
                   </div>
                 </a>
               </div>
@@ -85,9 +100,7 @@ export default function MylistId() {
         {/* アニメリスト */}
         <div className="ah dg dh">
           <div className="di b4">
-            <table className="ah dj b3">
-              {animeList}
-            </table>
+            <table className="ah dj b3">{animeList}</table>
           </div>
         </div>
       </div>
