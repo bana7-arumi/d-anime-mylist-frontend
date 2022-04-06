@@ -1,20 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react/cjs/react.development";
 
 export default function animeInfoHeader(props) {
   return (
-    <a href={props.info.title} target="_blank" rel="noopener noreferrer">
+    <a href={props.info.url} target="_blank" rel="noopener noreferrer">
       <div className="ai au ah av">
         {/* 画像 */}
         <div className="ah aw ax">
-          <div className="ah b3 b4 b5 b6">
-            {/* <Image
-              src={props.info.image}
+          <div className="ah b3 b4 b5 b6 ">
+            <Image
+              src={
+                props.info.image == null
+                  ? "/images/gray.jpeg"
+                  : props.info.image
+              }
               alt={props.info.title}
               height={100}
               width={200}
-            /> */}
-            <img src={props.info.image} alt={props.info.title} />
+              layout="fill"
+              objectFit="cover"
+            />
+            {/* <img src={props.info.image} alt={props.info.title} /> */}
           </div>
         </div>
         {/* アニメタイトル */}
@@ -28,7 +35,9 @@ export default function animeInfoHeader(props) {
                   </span>
                 </div>
                 <div className="bt bu dp">
-                  <span dir="auto">{"第1話　" + props.info.first}</span>
+                  <span dir="auto">{
+                    (props.info.stories == " ")?<>〜現在放送中〜</>:<>{"第1話　" + props.info.first}</>
+                  }</span>
                 </div>
               </div>
             </div>

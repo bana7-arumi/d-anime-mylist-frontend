@@ -58,6 +58,7 @@ export default function MyListAll() {
             allMylistAnimeData.map((data, index) => (
               <>
                 <MylistCard
+                  key={index}
                   className="m-2"
                   id={data.id}
                   d_anime_store_url={data.d_anime_store_url}

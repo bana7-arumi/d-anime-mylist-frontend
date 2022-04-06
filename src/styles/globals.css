@@ -11,6 +11,19 @@ td {
 	vertical-align: inherit;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+	display: none;
+  }
+  ::-webkit-scrollbar-thumb {
+	background: rgba(71, 71, 71, 0.564);
+	border-radius: 10px;
+	border: 2px solid rgb(158, 158, 158);
+	box-shadow: none;
+  }
+
 /* ---a?--- */
 .ae {
 	color: rgb(255, 255, 255);
@@ -81,6 +94,7 @@ td {
 .ax {
 	width: 200px;
 }
+
 
 /* ---b?--- */
 .bk {
@@ -223,6 +237,10 @@ td {
 	top: 19px;
 }
 
+.dv {
+	overflow-x: hidden;
+}
+
 .d7 {
 	@apply align-top;
 }
@@ -236,11 +254,7 @@ td {
 	color:rgb(30, 215, 96);
 }
 
-img {
-	object-fit: cover;
-	height: 100px;
-	width: 200px;
-}
+
 
 
 
