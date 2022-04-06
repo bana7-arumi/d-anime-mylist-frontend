@@ -2,9 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import { useLayoutEffect } from "react/cjs/react.production.min";
 import axios from "../../utils/axios";
+import AnimeInfoHeader from "../../components/AnimeInfoHeader";
+import { memo } from 'react';
 
-export default function MylistId() {
+export default function MylistId(){
+  const AnimeInfoHeaderMemo = memo(AnimeInfoHeader);
   const router = useRouter();
   // パスパラメータから値を取得
   const { id } = router.query;
@@ -27,6 +31,7 @@ export default function MylistId() {
       }
     })();
   }, [id]);
+
 
   function ClickAct(index) {
     setAnimeInfo(mylistList[index]);
@@ -61,44 +66,12 @@ export default function MylistId() {
       ))}
     </tbody>
   );
-
+  console.log(typeof animeInfo.image)
+  console.log(animeInfo)
   return (
     <div className="ae af ah ai aj ak al am an">
       <div className="ao apqrs at ai aj">
-        {/* 選択されているリスト要素 */}
-        <a href={animeInfo.url} target="_blank" rel="noopener noreferrer">
-          <div className="ai au ah av">
-            {/* 画像 */}
-            <div className="ah aw ax">
-              <div className="ah b3 b4 b5 b6">
-                {/* <Image
-                  src={animeInfo.image}
-                  alt={animeInfo.title}
-                  height={100}
-                  width={200}
-                /> */}
-                <img src={animeInfo.image} alt={animeInfo.title} />
-              </div>
-            </div>
-            {/* アニメタイトル */}
-            <div className="ah bk bl bg-white text-black">
-              <div className="ai">
-                <div className="ah bm b6 bn">
-                  <div className="bo bp bq br al bstu bi">
-                    <div className="bt bu bv bw bx">
-                      <span dir="auto">
-                        {animeInfo.title + " " + animeInfo.stories}
-                      </span>
-                    </div>
-                    <div className="bt bu dp">
-                      <span dir="auto">{"第1話　" + animeInfo.first}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
+        <AnimeInfoHeaderMemo info={animeInfo}/>
         {/* アニメリスト */}
         <div className="ah dg dh">
           <div className="di b4">
@@ -109,3 +82,4 @@ export default function MylistId() {
     </div>
   );
 }
+
