@@ -10,7 +10,7 @@ export default function Test() {
     // URL (http://localhost, https://hoge.com)
     const host = uri.protocol + "//" + uri.host;
     // データベースに存在しているIDを指定する string
-    const id = "wBXrAVrONYEMUrjB";
+    const id = "gDFZeAvzxD1TjaaW";
     // 埋め込みたいiframeの縦横のサイズ number
     const width = 300;
     const height = 500;
