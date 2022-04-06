@@ -3,7 +3,7 @@ import Image from "next/image";
 import deteformat from "../utils/deteformat";
 
 export default function mylistCard(props) {
-  const animeDataPerPage = 4;
+  const animeDataPerCard = 4;
   return (
     <div className={props.className}>
       <a href={`/myList/${props.id}`}>
@@ -11,7 +11,7 @@ export default function mylistCard(props) {
           <div className="grid grid-cols-2">
             {props.mylist.map(
               (data, index) =>
-                index < animeDataPerPage && (
+                index < animeDataPerCard && (
                   <Image
                     key={index}
                     src={data.image}
@@ -22,7 +22,7 @@ export default function mylistCard(props) {
                 )
             )}
             {[
-              ...Array(Math.max(animeDataPerPage - props.mylist.length, 0)),
+              ...Array(Math.max(animeDataPerCard - props.mylist.length, 0)),
             ].map((_, index) => (
               <Image
                 key={index}
@@ -38,11 +38,11 @@ export default function mylistCard(props) {
               <div className="text-sm">
                 {props.mylist.map(
                   (data, index) =>
-                    index < animeDataPerPage && (
+                    index < animeDataPerCard && (
                       <span className="font-medium mr-5">{data.title}</span>
                     )
                 )}
-                {props.mylist.length > animeDataPerPage && <>...</>}
+                {props.mylist.length > animeDataPerCard && <>...</>}
               </div>
             </div>
             <div>
