@@ -42,34 +42,34 @@ export default function MyListAll() {
         <title>すべての My List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="bg-neutral-200">
-        <div className="mb-3">
-          <MyListAllHeader />
+        <div className="bg-neutral-200 ah ai aj ak">
+          <div className="mb-3">
+            <MyListAllHeader />
+          </div>
+          {allMylistAnimeData.length != allMylist.length && (
+            <>
+              <div className="h-screen w-screen flex justify-center items-center">
+                <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
+              </div>
+            </>
+          )}
+          <div className="grid grid-cols-1 lg:px-8 md:px-1 md:grid-cols-3">
+            {allMylistAnimeData.length == allMylist.length &&
+              allMylistAnimeData.map((data, index) => (
+                <>
+                  <MylistCard
+                    key={index}
+                    className="m-2"
+                    id={data.id}
+                    d_anime_store_url={data.d_anime_store_url}
+                    created_at={data.created_at}
+                    updated_at={data.updated_at}
+                    mylist={data.mylist}
+                  />
+                </>
+              ))}
+          </div>
         </div>
-        {allMylistAnimeData.length != allMylist.length && (
-          <>
-            <div className="h-screen w-screen flex justify-center items-center">
-              <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
-            </div>
-          </>
-        )}
-        <div className="grid grid-cols-1 lg:px-8 md:px-1 md:grid-cols-3">
-          {allMylistAnimeData.length == allMylist.length &&
-            allMylistAnimeData.map((data, index) => (
-              <>
-                <MylistCard
-                  key={index}
-                  className="m-2"
-                  id={data.id}
-                  d_anime_store_url={data.d_anime_store_url}
-                  created_at={data.created_at}
-                  updated_at={data.updated_at}
-                  mylist={data.mylist}
-                />
-              </>
-            ))}
-        </div>
-      </div>
     </>
   );
 }
