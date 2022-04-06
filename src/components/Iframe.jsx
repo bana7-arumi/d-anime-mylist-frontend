@@ -1,14 +1,26 @@
 import makeIframe from "../utils/makeIframe";
 import React, { useState, useEffect } from "react";
 
-export default function Iframe() {
-  const [Iframe, setIframe] = useState("<h1>👆ボタンを押してね<h1>");
+export default function Iframe(props) {
+  function copyTextToClipboard(text) {
+    navigator.clipboard.writeText(text).then(
+      function () {
+        window.alert("Copied!");
+      },
+      function (err) {
+        console.error("Async: Could not copy text: ", err);
+      }
+    );
+  }
+
+  const [Iframe, setIframe] = useState("");
   const handleClick = () => {
+    copyTextToClipboard(props.id);
     var uri = new URL(window.location.href);
     // URL (http://localhost, https://hoge.com)
     const host = uri.protocol + "//" + uri.host;
     // データベースに存在しているIDを指定する string
-    const id = "wBXrAVrONYEMUrjB";
+    const id = props.id;
     // 埋め込みたいiframeの縦横のサイズ number
     const width = 300;
     const height = 500;
@@ -25,7 +37,7 @@ export default function Iframe() {
             className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none"
             id="username"
             type="search"
-            placeholder=""
+            placeholder={props.id}
           ></input>
           <span class="inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
             <button onClick={handleClick}>
