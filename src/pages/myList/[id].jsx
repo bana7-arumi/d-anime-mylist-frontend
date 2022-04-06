@@ -66,37 +66,39 @@ export default function MylistId() {
     <div className="ae af ah ai aj ak al am an">
       <div className="ao apqrs at ai aj">
         {/* 選択されているリスト要素 */}
-        <div className="ai au ah av">
-          {/* 画像 */}
-          <div className="ah aw ax">
-            <div className="ah b3 b4 b5 b6">
-              {/* <Image
-                src={animeInfo.image}
-                alt={animeInfo.title}
-                height={100}
-                width={200}
-              /> */}
-              <img src={animeInfo.image} alt={animeInfo.title} />
+        <a href={animeInfo.url} target="_blank" rel="noopener noreferrer">
+          <div className="ai au ah av">
+            {/* 画像 */}
+            <div className="ah aw ax">
+              <div className="ah b3 b4 b5 b6">
+                {/* <Image
+                  src={animeInfo.image}
+                  alt={animeInfo.title}
+                  height={100}
+                  width={200}
+                /> */}
+                <img src={animeInfo.image} alt={animeInfo.title} />
+              </div>
             </div>
-          </div>
-          {/* アニメタイトル */}
-          <div className="ah bk bl bg-white text-black">
-            <div className="ai">
-              <div className="ah bm b6 bn">
-                <a className="bo bp bq br al bstu bi">
-                  <div className="bt bu bv bw bx">
-                    <span dir="auto">
-                      {animeInfo.title + " " + animeInfo.stories}
-                    </span>
+            {/* アニメタイトル */}
+            <div className="ah bk bl bg-white text-black">
+              <div className="ai">
+                <div className="ah bm b6 bn">
+                  <div className="bo bp bq br al bstu bi">
+                    <div className="bt bu bv bw bx">
+                      <span dir="auto">
+                        {animeInfo.title + " " + animeInfo.stories}
+                      </span>
+                    </div>
+                    <div className="bt bu dp">
+                      <span dir="auto">{"第1話　" + animeInfo.first}</span>
+                    </div>
                   </div>
-                  <div className="bt bu dp">
-                    <span dir="auto">{"第1話　" + animeInfo.first}</span>
-                  </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </a>
         {/* アニメリスト */}
         <div className="ah dg dh">
           <div className="di b4">
