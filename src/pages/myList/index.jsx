@@ -9,7 +9,10 @@ export default function MyListAll() {
   //API GET
   const [allMylist, setAllMylist] = useState([]);
   const [allMylistAnimeData, setAllMylistAnimeData] = useState([]);
-
+  const [isHeaderOpen, setIsHeaderOpen] = useState(false);
+  const HumbergerFunction = () => {
+    setIsHeaderOpen((isOpen) => !isOpen);
+  };
   useEffect(() => {
     (async () => {
       try {
@@ -44,7 +47,10 @@ export default function MyListAll() {
       </Head>
       <div className="bg-neutral-200">
         <div className="mb-3">
-          <MyListAllHeader />
+          <MyListAllHeader
+            isOpen={isHeaderOpen}
+            HumbergerFunction={HumbergerFunction}
+          />
         </div>
         {allMylistAnimeData.length != allMylist.length && (
           <>
