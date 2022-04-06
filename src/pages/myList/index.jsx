@@ -48,7 +48,10 @@ export default function MyListAll() {
       </Head>
       <div className="bg-neutral-200 ah ai aj ak">
         <div className="mb-3">
-          <MyListAllHeader />
+          <MyListAllHeader
+            isOpen={isHeaderOpen}
+            HumbergerFunction={HumbergerFunction}
+          />
         </div>
         {allMylistAnimeData.length != allMylist.length && (
           <>
