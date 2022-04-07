@@ -2,8 +2,8 @@ import makeIframe from "../utils/makeIframe";
 import React, { useState, useEffect } from "react";
 
 export default function Iframe(props) {
-  function copyTextToClipboard(text) {
-    navigator.clipboard.writeText(text).then(
+  function copyTextToClipboard() {
+    navigator.clipboard.writeText(Iframe).then(
       function () {
         window.alert("Copied!");
       },
@@ -16,7 +16,6 @@ export default function Iframe(props) {
   const [Iframe, setIframe] = useState("");
   const [mylistId, setMylistId] = useState("");
   const handleClick = () => {
-    copyTextToClipboard(props.id);
     var uri = new URL(window.location.href);
     // URL (http://localhost, https://hoge.com)
     const host = uri.protocol + "//" + uri.host;
@@ -29,6 +28,7 @@ export default function Iframe(props) {
     const border = props.border;
     const Iframe = makeIframe(host, id, width, height, border);
     setIframe(Iframe);
+    copyTextToClipboard(Iframe);
   };
   return (
     <div>
