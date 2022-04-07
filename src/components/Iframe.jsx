@@ -37,7 +37,7 @@ export default function Iframe(props) {
           <input
             className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none"
             type="search"
-            placeholder="マイリストのIDを入力してください"
+            placeholder={Iframe}
             value={mylistId}
             onChange={(e) => setMylistId(e.target.value)}
           ></input>
