@@ -42,10 +42,10 @@ export default function myListAllHeader(props) {
         }
       >
         <div className="text-sm lg:flex-grow">
-          <div className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 font-medium hover:text-white mr-4">
+          <div className="block mt-4 lg:inline-block lg:mt-0 text-secondary-cyan font-medium hover:text-white mr-4">
             <Link href="/">トップ</Link>
           </div>
-          <div className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 font-medium hover:text-white mr-4">
+          <div className="block mt-4 lg:inline-block lg:mt-0 text-secondary-cyan font-medium hover:text-white mr-4">
             <Link href="/myList">MyList一覧</Link>
           </div>
         </div>

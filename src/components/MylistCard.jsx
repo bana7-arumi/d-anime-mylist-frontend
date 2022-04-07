@@ -39,7 +39,9 @@ export default function mylistCard(props) {
                 {props.mylist.map(
                   (data, index) =>
                     index < animeDataPerPage && (
-                      <span key={index}className="font-medium mr-5">{data.title}</span>
+                      <span key={index} className="font-medium mr-5">
+                        {data.title}
+                      </span>
                     )
                 )}
                 {props.mylist.length > animeDataPerPage && <>...</>}
