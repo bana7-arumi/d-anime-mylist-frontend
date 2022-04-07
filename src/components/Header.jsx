@@ -1,12 +1,36 @@
 import LogoIcon from "./LogoIcon";
+import { useState, useEffect } from "react";
+import axios from "../utils/axios";
 
 export default function Header() {
+  const [message, setMessage] = useState("");
+  const [setmylisturl, setMylistUrl] = useState("");
+  const handleClick = () => {
+    setMylistUrl(message);
+    setMessage("");
+    console.log("clicked");
+  };
+
+  useEffect(() => {
+    console.log("called");
+    (async () => {
+      try {
+        await axios.post("/my-list", {
+          url: setmylisturl,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [setmylisturl]);
+
   return (
     <div className="p-8 bg-primary-orange shadow-md">
       <div>
         <div className="flex justify-center">
           <h1 className="my-32  text-secondary-cyan text-6xl font-bold">
             What would you like to embed?
+            <p>ボタンクリック：{message}</p>
           </h1>
           <LogoIcon />
         </div>
@@ -17,21 +41,10 @@ export default function Header() {
               id="search"
               type="search"
               placeholder="マイリストのURLを入力"
-            ></input>
-            {/* <div className="bg-secondary-cyan absolute right-0 flex items-center pointer-events-none">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18 4C10.2917 4 4 10.2917 4 18C4 25.7083 10.2917 32 18 32C21.496 32 24.69 30.696 27.1484 28.5625L28 29.4141V32L40 44L44 40L32 28H29.4141L28.5625 27.1484C30.696 24.69 32 21.496 32 18C32 10.2917 25.7083 4 18 4ZM18 8C23.5465 8 28 12.4535 28 18C28 23.5465 23.5465 28 18 28C12.4535 28 8 23.5465 8 18C8 12.4535 12.4535 8 18 8Z"
-                  fill="#F29D38"
-                />
-              </svg>
-            </div> */}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <button onClick={handleClick}>送信</button>
           </div>
         </div>
       </div>

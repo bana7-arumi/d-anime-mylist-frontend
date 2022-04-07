@@ -22,8 +22,8 @@ export default function Iframe(props) {
     // データベースに存在しているIDを指定する string
     const id = props.id;
     // 埋め込みたいiframeの縦横のサイズ number
-    const width = 300;
-    const height = 500;
+    const width = props.width;
+    const height = props.height;
     // iframeにオレンジの枠を付けるか bool
     const border = true;
     const Iframe = makeIframe(host, id, width, height, border);
@@ -39,7 +39,7 @@ export default function Iframe(props) {
             type="search"
             placeholder={props.id}
           ></input>
-          <span class="inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
+          <span className="inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
             <button onClick={handleClick}>
               <svg
                 width="32"
