@@ -44,7 +44,7 @@ export default function Header() {
         <div className="relative">
           <div className="flex justify-center p-2 mb-2">
             <input
-              className="shadow appearance-none border rounded w-1/2 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-l-lg w-1/2 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="search"
               type="search"
               placeholder="マイリストのURLを入力してください"
@@ -52,7 +52,7 @@ export default function Header() {
               onChange={(e) => setMessage(e.target.value)}
             />
             <button
-              className="inline-flex items-center px-3 bg-primary-orange rounded-r-lg"
+              className="shadow appearance-none inline-flex items-center px-4 rounded-r-lg"
               onClick={handleClick}
             >
               <svg
@@ -63,11 +63,11 @@ export default function Header() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                ></path>
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </button>
           </div>

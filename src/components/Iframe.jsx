@@ -41,7 +41,7 @@ export default function Iframe(props) {
             value={mylistId}
             onChange={(e) => setMylistId(e.target.value)}
           ></input>
-          <span className="inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
+          <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
             <button onClick={handleClick}>
               <svg
                 width="32"
