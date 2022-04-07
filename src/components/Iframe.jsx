@@ -14,18 +14,19 @@ export default function Iframe(props) {
   }
 
   const [Iframe, setIframe] = useState("");
+  const [mylistId, setMylistId] = useState("");
   const handleClick = () => {
     copyTextToClipboard(props.id);
     var uri = new URL(window.location.href);
     // URL (http://localhost, https://hoge.com)
     const host = uri.protocol + "//" + uri.host;
     // データベースに存在しているIDを指定する string
-    const id = props.id;
+    const id = mylistId;
     // 埋め込みたいiframeの縦横のサイズ number
     const width = props.width;
     const height = props.height;
     // iframeにオレンジの枠を付けるか bool
-    const border = true;
+    const border = props.border;
     const Iframe = makeIframe(host, id, width, height, border);
     setIframe(Iframe);
   };
@@ -35,9 +36,10 @@ export default function Iframe(props) {
         <div className="flex justify-center">
           <input
             className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none"
-            id="username"
             type="search"
-            placeholder={props.id}
+            placeholder="マイリストのIDを入力してください"
+            value={mylistId}
+            onChange={(e) => setMylistId(e.target.value)}
           ></input>
           <span className="inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
             <button onClick={handleClick}>
