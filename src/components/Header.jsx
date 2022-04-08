@@ -9,7 +9,7 @@ export default function Header(props) {
           <h1 className="my-16 mx-16 text-white text-4xl font-bold">
             Let's d-anime-embed!
           </h1>
-          <LogoIcon />
+          <LogoIcon width={100} height={100} />
         </div>
         <div className="relative">
           <div className="flex justify-center p-2 mb-2">
