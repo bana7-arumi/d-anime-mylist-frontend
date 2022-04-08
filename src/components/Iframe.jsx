@@ -14,13 +14,12 @@ export default function Iframe(props) {
   }
 
   const [Iframe, setIframe] = useState("");
-  const [mylistId, setMylistId] = useState("");
   const handleClick = () => {
     var uri = new URL(window.location.href);
     // URL (http://localhost, https://hoge.com)
     const host = uri.protocol + "//" + uri.host;
     // データベースに存在しているIDを指定する string
-    const id = mylistId;
+    const id = props.mylistId;
     // 埋め込みたいiframeの縦横のサイズ number
     const width = props.width;
     const height = props.height;
@@ -37,9 +36,7 @@ export default function Iframe(props) {
           <input
             className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none"
             type="search"
-            placeholder={Iframe ? Iframe : "マイリストIDを入力してください"}
-            value={mylistId}
-            onChange={(e) => setMylistId(e.target.value)}
+            placeholder={Iframe}
           ></input>
           <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
             <button onClick={handleClick}>

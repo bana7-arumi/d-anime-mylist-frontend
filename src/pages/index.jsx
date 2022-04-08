@@ -6,13 +6,7 @@ import axios from "../utils/axios";
 export default function Home() {
   const [isBorder, setIsBorder] = useState(true);
   const [mylisturl, setMylistUrl] = useState("");
-  const [mylistid, setMylistId] = useState("");
-
-  // const handleClick = () => {
-  //   setMylistUrl(value);
-  //   setValue("");
-  //   console.log("clicked");
-  // };
+  const [mylistId, setMylistId] = useState("");
 
   useEffect(() => {
     console.log("called");
@@ -31,8 +25,8 @@ export default function Home() {
             { headers }
           )
           .then((res) => {
-            setMylistId(res.data.id);
-            console.log(res.data.id);
+            setMylistId(res.data.mylist_id);
+            console.log(res.data.mylist_id);
           });
       } catch (err) {
         console.log(err);
@@ -69,7 +63,14 @@ export default function Home() {
       </div>
       <div className="relative">
         <div className="shadow-xs">
-          {<Iframe width={300} height={500} border={isBorder} />}
+          {
+            <Iframe
+              mylistId={mylistId.mylist_id}
+              width={300}
+              height={500}
+              border={isBorder}
+            />
+          }
         </div>
       </div>
     </div>

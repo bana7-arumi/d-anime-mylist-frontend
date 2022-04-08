@@ -1,6 +1,5 @@
 import LogoIcon from "./LogoIcon";
 import { useState, useEffect } from "react";
-import axios from "../utils/axios";
 
 export default function Header(props) {
   const [value, setValue] = useState("");
