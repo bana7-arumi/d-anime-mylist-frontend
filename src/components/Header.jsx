@@ -1,5 +1,4 @@
 import LogoIcon from "./LogoIcon";
-import { useState, useEffect } from "react";
 
 export default function Header(props) {
   return (

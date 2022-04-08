@@ -91,7 +91,7 @@ export default function Home() {
         <div className="shadow-xs">
           {
             <Iframe
-              mylistId={mylistId.mylist_id}
+              mylistId={mylistId}
               width={width}
               height={height}
               border={isBorder}
