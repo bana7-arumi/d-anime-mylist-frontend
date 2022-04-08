@@ -19,7 +19,7 @@ export default function Home() {
       };
       try {
         await axios
-          .post(
+          .put(
             "/my-list",
             {
               url: mylisturl,
