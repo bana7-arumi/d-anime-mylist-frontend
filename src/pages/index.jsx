@@ -5,10 +5,44 @@ import axios from "../utils/axios";
 
 export default function Home() {
   const [isBorder, setIsBorder] = useState(true);
+  const [mylisturl, setMylistUrl] = useState("");
+  const [mylistid, setMylistId] = useState("");
+
+  // const handleClick = () => {
+  //   setMylistUrl(value);
+  //   setValue("");
+  //   console.log("clicked");
+  // };
+
+  useEffect(() => {
+    console.log("called");
+    (async () => {
+      const headers = {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      try {
+        await axios
+          .post(
+            "/my-list",
+            {
+              url: mylisturl,
+            },
+            { headers }
+          )
+          .then((res) => {
+            setMylistId(res.data.id);
+            console.log(res.data.id);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [mylisturl]);
 
   return (
     <div>
-      <Header />
+      <Header setMylistUrl={setMylistUrl} />
       <div className="flex justify-center">Here are your display options.</div>
       <div className="container mx-auto px-4 flex justify-center">
         <div className="grid grid-cols-2 gap-4">
