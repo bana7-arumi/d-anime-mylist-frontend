@@ -50,6 +50,8 @@ export default function Home() {
                   <input
                     type="radio"
                     className="form-radio"
+                    name="borderType"
+                    value="枠線なし"
                     onChange={() => setIsBorder(false)}
                   />
                   <span className="ml-2">枠線なし</span>
@@ -58,8 +60,8 @@ export default function Home() {
                   <input
                     type="radio"
                     className="form-radio"
-                    name="accountType"
-                    value="busines"
+                    name="borderType"
+                    value="枠線あり"
                     onChange={() => setIsBorder(true)}
                   />
                   <span className="ml-2">枠線あり</span>
