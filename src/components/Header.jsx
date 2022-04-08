@@ -14,8 +14,8 @@ export default function Header(props) {
           <div className="flex justify-center p-2 mb-2">
             <input
               className="cursor-pointer shadow appearance-none border rounded-lg w-2/3 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
-              id="search"
-              type="search"
+              id="urlform"
+              type="url"
               placeholder="マイリストのURLを入力してください"
               onChange={(e) => props.setMylistUrl(e.target.value)}
             />
