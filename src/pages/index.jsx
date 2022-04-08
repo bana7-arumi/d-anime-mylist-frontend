@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div>
       <Header setMylistUrl={setMylistUrl} />
-      <div className="flex justify-center">Here are your display options.</div>
+      <div className="flex justify-center">埋め込みオプションを設定</div>
 
       <div className="container mx-auto px-4 flex justify-center">
         <div className="block">

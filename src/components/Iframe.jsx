@@ -35,7 +35,9 @@ export default function Iframe(props) {
         <div className="flex justify-center">
           <input
             className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
-            placeholder={Iframe ? Iframe : ""}
+            placeholder={
+              Iframe ? Iframe : "クリックで埋め込みボックスを生成する"
+            }
             onClick={handleClick}
           />
           <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0 hover:bg-primary-variant-orange">
