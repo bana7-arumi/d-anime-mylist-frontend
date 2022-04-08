@@ -25,8 +25,8 @@ export default function Iframe(props) {
     const height = props.height;
     // iframeにオレンジの枠を付けるか bool
     const border = props.border;
-    const Iframe = makeIframe(host, id, width, height, border);
-    setIframe(Iframe);
+    const IframeUrl = makeIframe(host, id, width, height, border);
+    setIframe(IframeUrl);
     copyTextToClipboard(Iframe);
   };
   return (
@@ -34,11 +34,11 @@ export default function Iframe(props) {
       <div className="m-5">
         <div className="flex justify-center">
           <input
-            className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none"
-            type="search"
+            className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
             placeholder={Iframe}
+            onClick={handleClick}
           ></input>
-          <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0">
+          <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0 hover:bg-primary-variant-orange">
             <button onClick={handleClick}>
               <svg
                 width="32"

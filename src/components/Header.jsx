@@ -5,10 +5,10 @@ export default function Header(props) {
   const [value, setValue] = useState("");
 
   return (
-    <div className="p-8 bg-primary-orange shadow-md">
+    <div className="p-32 bg-primary-orange shadow-md">
       <div>
         <div className="flex justify-center">
-          <h1 className="my-32  text-secondary-cyan text-6xl font-bold">
+          <h1 className="my-16  text-secondary-cyan text-4xl font-bold">
             What would you like to embed?
           </h1>
           <LogoIcon />
