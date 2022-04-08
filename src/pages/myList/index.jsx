@@ -46,7 +46,7 @@ export default function MyListAll() {
         <title>すべての My List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="bg-neutral-200">
+      <div className="bg-neutral-200 min-h-screen">
         <div className="mb-3">
           <MyListAllHeader
             isOpen={isHeaderOpen}
