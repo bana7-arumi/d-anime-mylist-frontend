@@ -7,6 +7,8 @@ export default function Home() {
   const [isBorder, setIsBorder] = useState(true);
   const [mylisturl, setMylistUrl] = useState("");
   const [mylistId, setMylistId] = useState("");
+  const [width, setWidth] = useState(500);
+  const [height, setHeight] = useState(300);
 
   useEffect(() => {
     console.log("called");
@@ -38,26 +40,48 @@ export default function Home() {
     <div>
       <Header setMylistUrl={setMylistUrl} />
       <div className="flex justify-center">Here are your display options.</div>
+
       <div className="container mx-auto px-4 flex justify-center">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <div className="group active:primary-variant-orange shadow-xs"></div>
-            <button
-              className="group hover:bg-primary-orange rounded-lg"
-              onClick={() => setIsBorder(false)}
-            >
-              <div className="group-hover:text-white box h-32 w-32 p-4"></div>
-            </button>
-          </div>
-          <div>
-            <button
-              className="group hover:bg-primary-orange  rounded-lg"
-              onClick={() => setIsBorder(true)}
-            >
-              <div className="shadow-xs">
-                <div className="group-hover:text-white box-border h-32 w-32 p-4 border-2 border-primary-orange rounded-lg"></div>
+        <div className="block">
+          <div className="mt-2">
+            <div className="mt-4">
+              <div className="mt-2">
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    onChange={() => setIsBorder(false)}
+                  />
+                  <span className="ml-2">枠線なし</span>
+                </label>
+                <label className="inline-flex items-center ml-6">
+                  <input
+                    type="radio"
+                    className="form-radio"
+                    name="accountType"
+                    value="busines"
+                    onChange={() => setIsBorder(true)}
+                  />
+                  <span className="ml-2">枠線あり</span>
+                </label>
               </div>
-            </button>
+            </div>
+            <label className="block mt-4">
+              <span className="text-gray-700">横幅を選択する</span>
+              <select className="form-select mt-1 block w-full">
+                <option onClick={() => setWidth(500)}>500</option>
+                <option onClick={() => setWidth(400)}>400</option>
+                <option onClick={() => setWidth(300)}>300</option>
+              </select>
+            </label>
+            <label className="block mt-4">
+              <span className="text-gray-700">縦幅を選択する</span>
+              <select className="form-select mt-1 block w-full">
+                <option onClick={() => setHeight(500)}>500</option>
+                <option onClick={() => setHeight(400)}>400</option>
+                <option onClick={() => setHeight(300)}>300</option>
+              </select>
+            </label>
           </div>
         </div>
       </div>
@@ -66,8 +90,8 @@ export default function Home() {
           {
             <Iframe
               mylistId={mylistId.mylist_id}
-              width={300}
-              height={500}
+              width={width}
+              height={height}
               border={isBorder}
             />
           }
