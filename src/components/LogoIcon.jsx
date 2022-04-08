@@ -1,8 +1,10 @@
-export default function LogoIcon() {
+export default function LogoIcon(props) {
+  const width = props.width;
+  const height = props.height;
   return (
     <svg
-      width="180"
-      height="180"
+      width={width ? width : 180}
+      height={height ? height : 180}
       viewBox="0 0 180 180"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
