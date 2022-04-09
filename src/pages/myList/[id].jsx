@@ -18,15 +18,17 @@ export default function MylistId() {
 
   useEffect(() => {
     (async () => {
-      if(router.isReady){
+      if (router.isReady) {
         try {
           const res = await axios.get(`/my-list?id=${id}`);
           console.log(res.data);
           console.log(res.data.mylist);
+          console.log(res.status);
           setMylistList(res.data.mylist);
           setAnimeInfo(res.data.mylist[0]);
         } catch (err) {
           console.log(err);
+          router.push("/404");
         }
       }
     })();
@@ -55,9 +57,13 @@ export default function MylistId() {
               </div>
               {/* 話数 */}
               <div className="ao du ds b3 bstu ae dp">
-                <span dir="auto">{
-                  (data.stories == " ")?<>〜現在放送中〜</>:<>{data.stories}</>
-                }</span>
+                <span dir="auto">
+                  {data.stories == " " ? (
+                    <>〜現在放送中〜</>
+                  ) : (
+                    <>{data.stories}</>
+                  )}
+                </span>
               </div>
             </div>
           </td>
