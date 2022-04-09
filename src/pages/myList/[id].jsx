@@ -15,6 +15,7 @@ export default function MylistId() {
   //API GET
   const [mylistList, setMylistList] = useState([]);
   const [animeInfo, setAnimeInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -22,12 +23,15 @@ export default function MylistId() {
         try {
           const res = await axios.get(`/my-list?id=${id}`);
           console.log(res.data);
-          console.log(res.data.mylist);;
+          console.log(res.data.mylist);
           setMylistList(res.data.mylist);
           setAnimeInfo(res.data.mylist[0]);
+          setIsLoading(false);
         } catch (err) {
-          console.log(err);
-          router.push("/404");
+          switch (err.response?.status) {
+            case 402:
+              router.push("/404");
+          }
         }
       }
     })();
@@ -70,7 +74,7 @@ export default function MylistId() {
       ))}
     </tbody>
   );
-  return mylistList != [] ? (
+  return !isLoading ? (
     <>
       <Head>
         <title>{id + "のマイリスト"}</title>
