@@ -22,8 +22,7 @@ export default function MylistId() {
         try {
           const res = await axios.get(`/my-list?id=${id}`);
           console.log(res.data);
-          console.log(res.data.mylist);
-          console.log(res.status);
+          console.log(res.data.mylist);;
           setMylistList(res.data.mylist);
           setAnimeInfo(res.data.mylist[0]);
         } catch (err) {
