@@ -12,7 +12,7 @@ export default function Home() {
   const [height, setHeight] = useState(300);
   const [enabled, setEnabled] = useState(false);
 
-  const test = (flag) => {
+  const borderTriger = (flag) => {
     if (flag == true) {
       setEnabled(flag);
       setIsBorder(flag);
@@ -77,7 +77,7 @@ export default function Home() {
           <div className="mt-2">
             <Switch
               checked={enabled}
-              onChange={test}
+              onChange={borderTriger}
               className={`${
                 enabled ? "bg-blue-600" : "bg-gray-200"
               } relative inline-flex items-center h-6 rounded-full w-11`}
