@@ -2,13 +2,19 @@ import LogoIcon from "./LogoIcon";
 
 export default function Header(props) {
   return (
-    <div className="p-48 bg-primary-orange shadow-md">
+    <div className="p-8 bg-primary-orange shadow-md">
       <div>
+        <div className="flex justify-end">
+          <LogoIcon width={180} height={180} />
+        </div>
         <div className="flex justify-center">
-          <h1 className="my-16 mx-16 text-white text-4xl font-bold">
-            Let's d-anime-embed!
+          <h1 className="my-16 mx-16 text-white text-5xl font-bold">
+            Lets share your MyList
           </h1>
-          <LogoIcon width={100} height={100} />
+          <br />
+          <p className="my-16 mx-16 text-cyan text-small">
+            Lets share your MyList
+          </p>
         </div>
         <div className="relative">
           <div className="flex justify-center p-2 mb-2">

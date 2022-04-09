@@ -9,10 +9,16 @@ export default function Home() {
   const [mylistId, setMylistId] = useState("");
   const [width, setWidth] = useState(500);
   const [height, setHeight] = useState(300);
+  const [message, setMessage] = useState("埋め込みボックスを生成する");
+  const [uri, setUri] = useState("");
+  const [flag, flagChange] = useState(Boolean);
 
   useEffect(() => {
     console.log("called");
+    flagChange(true);
     (async () => {
+      setUri(new URL(window.location.href));
+      setMessage("埋め込みボックスを生成中");
       const headers = {
         accept: "application/json",
         "Content-Type": "application/json",
@@ -29,6 +35,8 @@ export default function Home() {
           .then((res) => {
             setMylistId(res.data.mylist_id);
             console.log(res.data.mylist_id);
+            setMessage(mylistId);
+            flagChange(false);
           });
       } catch (err) {
         switch (err.response?.status) {
@@ -45,6 +53,7 @@ export default function Home() {
               .then((res) => {
                 setMylistId(res.data.mylist_id);
                 console.log(res.data.mylist_id);
+                flagChange(false);
               });
           default:
             console.log(err);
@@ -52,6 +61,10 @@ export default function Home() {
       }
     })();
   }, [mylisturl]);
+
+  useEffect(() => {
+    setMessage("埋め込みボックスを生成する");
+  }, []);
 
   return (
     <div>
@@ -114,6 +127,9 @@ export default function Home() {
               width={width}
               height={height}
               border={isBorder}
+              message={message}
+              uri={uri}
+              flag={flag}
             />
           }
         </div>
