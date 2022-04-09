@@ -19,7 +19,7 @@ export default function Home() {
       };
       try {
         await axios
-          .put(
+          .post(
             "/my-list",
             {
               url: mylisturl,
@@ -31,7 +31,24 @@ export default function Home() {
             console.log(res.data.mylist_id);
           });
       } catch (err) {
-        console.log(err);
+        switch (err.response?.status) {
+          // すでに存在しているmylistのURLをPOSTすると409が返却される
+          case 409:
+            axios
+              .put(
+                "/my-list",
+                {
+                  url: mylisturl,
+                },
+                { headers }
+              )
+              .then((res) => {
+                setMylistId(res.data.mylist_id);
+                console.log(res.data.mylist_id);
+              });
+          default:
+            console.log(err);
+        }
       }
     })();
   }, [mylisturl]);
@@ -71,6 +88,7 @@ export default function Home() {
             <label className="block mt-4">
               <span className="text-gray-700">横幅を選択する</span>
               <select className="form-select mt-1 block w-full">
+                <option onClick={() => setHeight(500)}>指定なし</option>
                 <option onClick={() => setWidth(500)}>500</option>
                 <option onClick={() => setWidth(400)}>400</option>
                 <option onClick={() => setWidth(300)}>300</option>
@@ -79,6 +97,7 @@ export default function Home() {
             <label className="block mt-4">
               <span className="text-gray-700">縦幅を選択する</span>
               <select className="form-select mt-1 block w-full">
+                <option onClick={() => setHeight(300)}>指定なし</option>
                 <option onClick={() => setHeight(500)}>500</option>
                 <option onClick={() => setHeight(400)}>400</option>
                 <option onClick={() => setHeight(300)}>300</option>
