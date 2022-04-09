@@ -74,7 +74,7 @@ export default function Page404() {
         <div className="bg-primary-orange">
           <div className="h-screen w-screen py-24 text-center">
             <h1 className="text-8xl font-bold text-white mb-4">{status}</h1>
-            <p className="text-2xl text-secondary-cyan">{message}</p>
+            <p className="text-2xl text-teal-200">{message}</p>
             <div className="flex justify-center my-14">
               {saikoroList.map((data, index) => (
                 <div
