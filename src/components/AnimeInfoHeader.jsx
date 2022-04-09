@@ -1,6 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
+import { render } from "react-dom";
 import { useState } from "react/cjs/react.development";
+
+function isFirstTitle (props){
+  console.log(props);
+  if (props.info.stories != " ") {
+    if (props.info.first == "　") {
+      return <>Chapter.1 ~</>;
+    } else {
+      return <>{"第1話　" + props.info.first}</>;
+    }
+  }
+  return <></>;
+};
 
 export default function animeInfoHeader(props) {
   return (
@@ -35,9 +48,7 @@ export default function animeInfoHeader(props) {
                   </span>
                 </div>
                 <div className="bt bu dp">
-                  <span dir="auto">{
-                    (props.info.stories == " ")?<>〜現在放送中〜</>:<>{"第1話　" + props.info.first}</>
-                  }</span>
+                  <span dir="auto">{isFirstTitle(props)}</span>
                 </div>
               </div>
             </div>
