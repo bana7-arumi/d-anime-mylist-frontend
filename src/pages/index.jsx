@@ -82,6 +82,7 @@ export default function Home() {
                     className="form-radio"
                     name="borderType"
                     value="枠線なし"
+                    checked="checked"
                     onChange={() => setIsBorder(false)}
                   />
                   <span className="ml-2">枠線なし</span>

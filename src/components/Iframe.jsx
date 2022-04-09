@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Iframe(props) {
   function copyTextToClipboard() {
-    navigator.clipboard.writeText(Iframe).then(
+    navigator.clipboard.writeText(IframeUrl).then(
       function () {
         window.alert("Copied!");
       },
@@ -50,7 +50,7 @@ export default function Iframe(props) {
             <button
               className={flag ? "pointer-events-none cursor-wait" : ""}
               onClick={() => {
-                copyTextToClipboard(Iframe);
+                copyTextToClipboard(IframeUrl);
               }}
             >
               <svg
