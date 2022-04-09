@@ -4,7 +4,6 @@ import { render } from "react-dom";
 import { useState } from "react/cjs/react.development";
 
 function isFirstTitle (props){
-  console.log(props);
   if (props.info.stories != " ") {
     if (props.info.first == "　") {
       return <>Chapter.1 ~</>;
