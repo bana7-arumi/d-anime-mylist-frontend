@@ -15,18 +15,23 @@ export default function MylistId() {
   //API GET
   const [mylistList, setMylistList] = useState([]);
   const [animeInfo, setAnimeInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      if(router.isReady){
+      if (router.isReady) {
         try {
           const res = await axios.get(`/my-list?id=${id}`);
           console.log(res.data);
           console.log(res.data.mylist);
           setMylistList(res.data.mylist);
           setAnimeInfo(res.data.mylist[0]);
+          setIsLoading(false);
         } catch (err) {
-          console.log(err);
+          switch (err.response?.status) {
+            case 402:
+              router.push("/404");
+          }
         }
       }
     })();
@@ -55,9 +60,13 @@ export default function MylistId() {
               </div>
               {/* 話数 */}
               <div className="ao du ds b3 bstu ae dp">
-                <span dir="auto">{
-                  (data.stories == " ")?<>〜現在放送中〜</>:<>{data.stories}</>
-                }</span>
+                <span dir="auto">
+                  {data.stories == " " ? (
+                    <>〜現在放送中〜</>
+                  ) : (
+                    <>{data.stories}</>
+                  )}
+                </span>
               </div>
             </div>
           </td>
@@ -65,7 +74,7 @@ export default function MylistId() {
       ))}
     </tbody>
   );
-  return mylistList != [] ? (
+  return !isLoading ? (
     <>
       <Head>
         <title>{id + "のマイリスト"}</title>
