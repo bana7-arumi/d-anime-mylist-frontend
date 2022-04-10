@@ -3,7 +3,7 @@ import Image from "next/image";
 import { render } from "react-dom";
 import { useState } from "react/cjs/react.development";
 
-function isFirstTitle (props){
+function isFirstTitle(props) {
   if (props.info.stories != " ") {
     if (props.info.first == "　") {
       return <>Chapter.1 ~</>;
@@ -12,7 +12,7 @@ function isFirstTitle (props){
     }
   }
   return <></>;
-};
+}
 
 export default function animeInfoHeader(props) {
   return (
@@ -30,7 +30,6 @@ export default function animeInfoHeader(props) {
               alt={props.info.title}
               height={100}
               width={200}
-              layout="fill"
               objectFit="cover"
             />
             {/* <img src={props.info.image} alt={props.info.title} /> */}

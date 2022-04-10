@@ -16,6 +16,7 @@ export default function MylistId() {
   const [mylistList, setMylistList] = useState([]);
   const [animeInfo, setAnimeInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectIndex, setSelectIndex] = useState(-1);
 
   useEffect(() => {
     (async () => {
@@ -38,6 +39,11 @@ export default function MylistId() {
   }, [id]);
 
   function ClickAct(index) {
+    if (selectIndex != -1) {
+      document.getElementById(selectIndex).classList.remove("e3");
+    }
+    document.getElementById(index).classList.add("e3");
+    setSelectIndex(index);
     setAnimeInfo(mylistList[index]);
   }
 
@@ -46,6 +52,7 @@ export default function MylistId() {
       {mylistList.map((data, index) => (
         <tr
           key={index}
+          id={index}
           className="an bi d7 cs dk dl"
           onClick={() => ClickAct(index)}
         >
