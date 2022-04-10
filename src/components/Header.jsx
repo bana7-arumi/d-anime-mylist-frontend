@@ -8,16 +8,17 @@ export default function Header(props) {
           <LogoIcon width={180} height={180} />
         </div>
         <div className="flex justify-center">
-          <h1 className="my-16 mx-16 text-white text-5xl font-bold">
-            Lets share your MyList
+          <h1 className="my-4 mx-16 text-white text-5xl font-bold">
+            Let's share your MyList
           </h1>
-          <br />
-          <p className="my-16 mx-16 text-cyan text-small">
-            Lets share your MyList
+        </div>
+        <div className="flex justify-center">
+          <p className="my-2 mx-4 text-secondary-cyan text-small font-bold">
+            あなたのマイリストをあらゆるメディアに埋め込みましょう
           </p>
         </div>
         <div className="relative">
-          <div className="flex justify-center p-2 mb-2">
+          <div className="flex justify-center p-2 mb-2 my-8">
             <input
               className="cursor-pointer shadow appearance-none border rounded-lg w-2/3 py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
               type="search"
