@@ -60,7 +60,7 @@ export default function MyListAll() {
                 <MylistCard
                   key={index}
                   className="m-2"
-                  id={data.anime_id}
+                  id={data.mylist_id}
                   d_anime_store_url={data.d_anime_store_url}
                   created_at={data.created_at}
                   updated_at={data.updated_at}
