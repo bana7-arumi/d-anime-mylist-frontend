@@ -1,18 +1,7 @@
 import makeIframe from "../utils/makeIframe";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function Iframe(props) {
-  function copyTextToClipboard() {
-    navigator.clipboard.writeText(IframeUrl).then(
-      function () {
-        window.alert("Copied!");
-      },
-      function (err) {
-        console.error("Async: Could not copy text: ", err);
-      }
-    );
-  }
-
   var uri = props.uri;
   // URL (http://localhost, https://hoge.com)
   const host = uri.protocol + "//" + uri.host;
@@ -25,32 +14,49 @@ export default function Iframe(props) {
   const border = props.border;
   const IframeUrl = makeIframe(host, id, width, height, border);
   const message = props.message;
-  const flag = props.flag;
+  const generated = props.generated;
+
+  function openModal() {
+    props.setIsOpen(true);
+  }
+  function copyTextToClipboard() {
+    navigator.clipboard.writeText(IframeUrl).then(
+      function () {
+        // window.alert("Copied!");
+        openModal();
+      },
+      function (err) {
+        console.error("Async: Could not copy text: ", err);
+      }
+    );
+  }
 
   return (
     <div>
       <div className="m-5">
         <div
           className={
-            flag ? "cursor-wait flex justify-center" : "flex justify-center"
+            generated
+              ? "cursor-wait flex justify-center"
+              : "flex justify-center"
           }
         >
           <input
             className={
-              flag
+              generated
                 ? "pointer-events-none shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
                 : "shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
             }
-            placeholder={flag ? message : IframeUrl}
+            placeholder={generated ? message : IframeUrl}
             onClick={() => {
-              copyTextToClipboard(IframeUrl);
+              copyTextToClipboard();
             }}
           />
           <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0 hover:bg-primary-variant-orange">
             <button
-              className={flag ? "pointer-events-none cursor-wait" : ""}
+              className={generated ? "pointer-events-none cursor-wait" : ""}
               onClick={() => {
-                copyTextToClipboard(IframeUrl);
+                copyTextToClipboard();
               }}
             >
               <svg
@@ -69,7 +75,9 @@ export default function Iframe(props) {
           </span>
         </div>
         <div className="flex justify-center">
-          {!flag && <div dangerouslySetInnerHTML={{ __html: IframeUrl }} />}
+          {!generated && (
+            <div dangerouslySetInnerHTML={{ __html: IframeUrl }} />
+          )}
         </div>
       </div>
     </div>
