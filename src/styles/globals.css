@@ -252,8 +252,7 @@ td {
   pointer-events: none;
   color: rgb(30, 215, 96);
   background-blend-mode: screen;
-  border: 3px solid;
-  border-color: #b83d0c;
+  box-shadow: 0 0 0 2px #b83d0c inset;
 }
 
 .e3 td {
