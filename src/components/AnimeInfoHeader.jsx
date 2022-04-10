@@ -11,6 +11,11 @@ function isFirstTitle(props) {
       return <>{"第1話　" + props.info.first}</>;
     }
   }
+  if (props.info.first == "　") {
+    return <>Chapter.1 ~</>;
+  } else {
+    return <>{"第1話　" + props.info.first}</>;
+  }
   return <></>;
 }
 
