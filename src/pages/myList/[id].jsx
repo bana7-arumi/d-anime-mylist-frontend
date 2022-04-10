@@ -38,23 +38,17 @@ export default function MylistId() {
     })();
   }, [id]);
 
-  function ClickAct(index) {
-    if (selectIndex != -1) {
-      document.getElementById(selectIndex).classList.remove("e3");
-    }
-    document.getElementById(index).classList.add("e3");
-    setSelectIndex(index);
-    setAnimeInfo(mylistList[index]);
-  }
-
   const animeList = (
     <tbody>
       {mylistList.map((data, index) => (
         <tr
           key={index}
-          id={index}
-          className="an bi d7 cs dk dl"
-          onClick={() => ClickAct(index)}
+          className={
+            index + 1 == selectIndex
+              ? "an bi d7 cs dk dl e3"
+              : "an bi d7 cs dk dl"
+          }
+          onClick={() => setSelectIndex(index + 1)}
         >
           {/* index番号 */}
           <td className="ae dm d9 dn do dp">{index + 1}</td>
