@@ -25,7 +25,7 @@ export default function MyListAll() {
     allMylist.map((data, index) =>
       (async () => {
         try {
-          const res = await axios.get(`/my-list?id=${data.id}`);
+          const res = await axios.get(`/my-list?id=${data.mylist_id}`);
           setAllMylistAnimeData((allMylistAnimeData) =>
             allMylistAnimeData.concat(res.data)
           );
@@ -42,13 +42,13 @@ export default function MyListAll() {
         <title>すべての My List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className="bg-neutral-200">
+      <div className="bg-neutral-200 min-h-screen min-w-screen">
         <div className="mb-3">
           <MyListAllHeader />
         </div>
         {allMylistAnimeData.length != allMylist.length && (
           <>
-            <div className="h-screen w-screen flex justify-center items-center">
+            <div className="min-h-screen min-w-screen flex justify-center items-center">
               <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
             </div>
           </>
@@ -60,7 +60,7 @@ export default function MyListAll() {
                 <MylistCard
                   key={index}
                   className="m-2"
-                  id={data.id}
+                  id={data.anime_id}
                   d_anime_store_url={data.d_anime_store_url}
                   created_at={data.created_at}
                   updated_at={data.updated_at}
