@@ -1,11 +1,29 @@
 import makeIframe from "../utils/makeIframe";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function Iframe(props) {
+  var uri = props.uri;
+  // URL (http://localhost, https://hoge.com)
+  const host = uri.protocol + "//" + uri.host;
+  // データベースに存在しているIDを指定する string
+  const id = props.mylistId ? props.mylistId : "";
+  // 埋め込みたいiframeの縦横のサイズ number
+  const width = props.width;
+  const height = props.height;
+  // iframeにオレンジの枠を付けるか bool
+  const border = props.border;
+  const IframeUrl = makeIframe(host, id, width, height, border);
+  const message = props.message;
+  const generated = props.generated;
+
+  function openModal() {
+    props.setIsOpen(true);
+  }
   function copyTextToClipboard() {
-    navigator.clipboard.writeText(Iframe).then(
+    navigator.clipboard.writeText(IframeUrl).then(
       function () {
-        window.alert("Copied!");
+        // window.alert("Copied!");
+        openModal();
       },
       function (err) {
         console.error("Async: Could not copy text: ", err);
@@ -13,35 +31,34 @@ export default function Iframe(props) {
     );
   }
 
-  const [Iframe, setIframe] = useState("");
-  const handleClick = () => {
-    var uri = new URL(window.location.href);
-    // URL (http://localhost, https://hoge.com)
-    const host = uri.protocol + "//" + uri.host;
-    // データベースに存在しているIDを指定する string
-    const id = props.mylistId ? props.mylistId : "";
-    // 埋め込みたいiframeの縦横のサイズ number
-    const width = props.width;
-    const height = props.height;
-    // iframeにオレンジの枠を付けるか bool
-    const border = props.border;
-    const IframeUrl = makeIframe(host, id, width, height, border);
-    setIframe(IframeUrl);
-    copyTextToClipboard(Iframe);
-  };
   return (
     <div>
       <div className="m-5">
-        <div className="flex justify-center">
+        <div
+          className={
+            generated
+              ? "cursor-wait flex justify-center"
+              : "flex justify-center"
+          }
+        >
           <input
-            className="shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
-            placeholder={
-              Iframe ? Iframe : "クリックで埋め込みボックスを生成する"
+            className={
+              generated
+                ? "pointer-events-none shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
+                : "shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
             }
-            onClick={handleClick}
+            placeholder={generated ? message : IframeUrl}
+            onClick={() => {
+              copyTextToClipboard();
+            }}
           />
           <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0 hover:bg-primary-variant-orange">
-            <button onClick={handleClick}>
+            <button
+              className={generated ? "pointer-events-none cursor-wait" : ""}
+              onClick={() => {
+                copyTextToClipboard();
+              }}
+            >
               <svg
                 width="32"
                 height="32"
@@ -58,7 +75,9 @@ export default function Iframe(props) {
           </span>
         </div>
         <div className="flex justify-center">
-          <div dangerouslySetInnerHTML={{ __html: Iframe }} />
+          {!generated && (
+            <div dangerouslySetInnerHTML={{ __html: IframeUrl }} />
+          )}
         </div>
       </div>
     </div>

@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import Iframe from "../components/Iframe";
 import Header from "../components/Header";
 import axios from "../utils/axios";
+import { Switch } from "@headlessui/react";
+
+import ClipedModal from "../components/ClipedModal";
 
 export default function Home() {
-  const [isBorder, setIsBorder] = useState(true);
   const [mylisturl, setMylistUrl] = useState("");
   const [mylistId, setMylistId] = useState("");
   const [width, setWidth] = useState(500);
   const [height, setHeight] = useState(300);
+  const [message, setMessage] = useState("埋め込みボックスを生成する");
+  const [uri, setUri] = useState("");
+  const [generated, setGenerated] = useState(Boolean);
+  const [isOpen, setIsOpen] = useState(false);
+  const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
     console.log("called");
+    setGenerated(true);
     (async () => {
+      setUri(new URL(window.location.href));
+      setMessage("埋め込みボックスを生成中");
       const headers = {
         accept: "application/json",
         "Content-Type": "application/json",
@@ -29,6 +39,8 @@ export default function Home() {
           .then((res) => {
             setMylistId(res.data.mylist_id);
             console.log(res.data.mylist_id);
+            setMessage(mylistId);
+            setGenerated(false);
           });
       } catch (err) {
         switch (err.response?.status) {
@@ -45,6 +57,7 @@ export default function Home() {
               .then((res) => {
                 setMylistId(res.data.mylist_id);
                 console.log(res.data.mylist_id);
+                setGenerated(false);
               });
           default:
             console.log(err);
@@ -53,38 +66,33 @@ export default function Home() {
     })();
   }, [mylisturl]);
 
+  useEffect(() => {
+    setMessage("埋め込みボックスを生成する");
+  }, []);
+
   return (
     <div>
+      <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <Header setMylistUrl={setMylistUrl} />
       <div className="flex justify-center">埋め込みオプションを設定</div>
 
       <div className="container mx-auto px-4 flex justify-center">
         <div className="block">
           <div className="mt-2">
-            <div className="mt-4">
-              <div className="mt-2">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    className="form-radio"
-                    name="borderType"
-                    value="枠線なし"
-                    onChange={() => setIsBorder(false)}
-                  />
-                  <span className="ml-2">枠線なし</span>
-                </label>
-                <label className="inline-flex items-center ml-6">
-                  <input
-                    type="radio"
-                    className="form-radio"
-                    name="borderType"
-                    value="枠線あり"
-                    onChange={() => setIsBorder(true)}
-                  />
-                  <span className="ml-2">枠線あり</span>
-                </label>
-              </div>
-            </div>
+            <Switch
+              checked={enabled}
+              onChange={() => setEnabled(!enabled)}
+              className={`${
+                enabled ? "bg-blue-600" : "bg-gray-200"
+              } relative inline-flex items-center h-6 rounded-full w-11`}
+            >
+              <span className="sr-only">Enable notifications</span>
+              <span
+                className={`${
+                  enabled ? "translate-x-6" : "translate-x-1"
+                } inline-block w-4 h-4 transform bg-white rounded-full`}
+              />
+            </Switch>
             <label className="block mt-4">
               <span className="text-gray-700">横幅を選択する</span>
               <select className="form-select mt-1 block w-full">
@@ -113,7 +121,11 @@ export default function Home() {
               mylistId={mylistId}
               width={width}
               height={height}
-              border={isBorder}
+              border={enabled}
+              message={message}
+              uri={uri}
+              generated={generated}
+              setIsOpen={setIsOpen}
             />
           }
         </div>
