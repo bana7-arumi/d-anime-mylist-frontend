@@ -48,7 +48,10 @@ export default function MylistId() {
               ? "an bi d7 cs dk dl e3"
               : "an bi d7 cs dk dl"
           }
-          onClick={() => setSelectIndex(index + 1)}
+          onClick={() => {
+            setSelectIndex(index + 1);
+            setAnimeInfo(mylistList[index]);
+          }}
         >
           {/* index番号 */}
           <td className="ae dm d9 dn do dp">{index + 1}</td>
