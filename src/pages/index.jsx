@@ -79,20 +79,25 @@ export default function Home() {
       <div className="container mx-auto px-4 flex justify-center">
         <div className="block">
           <div className="mt-2">
-            <Switch
-              checked={enabled}
-              onChange={() => setEnabled(!enabled)}
-              className={`${
-                enabled ? "bg-blue-600" : "bg-gray-200"
-              } relative inline-flex items-center h-6 rounded-full w-11`}
-            >
-              <span className="sr-only">Enable notifications</span>
-              <span
+            <div className="flex">
+              <Switch
+                checked={enabled}
+                onChange={() => setEnabled(!enabled)}
                 className={`${
-                  enabled ? "translate-x-6" : "translate-x-1"
-                } inline-block w-4 h-4 transform bg-white rounded-full`}
-              />
-            </Switch>
+                  enabled ? "bg-blue-600" : "bg-gray-200"
+                } relative inline-flex items-center h-6 rounded-full w-11`}
+              >
+                <span className="sr-only">Enable notifications</span>
+                <span
+                  className={`${
+                    enabled ? "translate-x-6" : "translate-x-1"
+                  } inline-block w-4 h-4 transform bg-white rounded-full`}
+                />
+              </Switch>
+              <p className="text-1xl mx-2">
+                {enabled ? <>枠線あり</> : <>枠線なし</>}
+              </p>
+            </div>
             <label className="block mt-4">
               <span className="text-gray-700">横幅を選択する</span>
               <select className="form-select mt-1 block w-full">

@@ -74,7 +74,7 @@ export default function Iframe(props) {
             </button>
           </span>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center m-5">
           {!generated && (
             <div dangerouslySetInnerHTML={{ __html: IframeUrl }} />
           )}
