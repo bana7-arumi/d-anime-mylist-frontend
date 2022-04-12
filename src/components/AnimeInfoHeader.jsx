@@ -33,11 +33,9 @@ export default function animeInfoHeader(props) {
                   : props.info.image
               }
               alt={props.info.title}
-              height={100}
-              width={200}
+              layout="fill"
               objectFit="cover"
             />
-            {/* <img src={props.info.image} alt={props.info.title} /> */}
           </div>
         </div>
         {/* アニメタイトル */}
