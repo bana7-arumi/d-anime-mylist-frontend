@@ -57,15 +57,16 @@ export default function MyListAll() {
           {allMylistAnimeData.length == allMylist.length &&
             allMylistAnimeData.map((data, index) => (
               <>
-                <MylistCard
-                  key={index}
-                  className="m-2"
-                  id={data.mylist_id}
-                  d_anime_store_url={data.d_anime_store_url}
-                  created_at={data.created_at}
-                  updated_at={data.updated_at}
-                  mylist={data.mylist}
-                />
+                <div className="m-2">
+                  <MylistCard
+                    key={index}
+                    id={data.mylist_id}
+                    d_anime_store_url={data.d_anime_store_url}
+                    created_at={data.created_at}
+                    updated_at={data.updated_at}
+                    mylist={data.mylist}
+                  />
+                </div>
               </>
             ))}
         </div>

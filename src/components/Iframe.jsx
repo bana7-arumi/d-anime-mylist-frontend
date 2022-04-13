@@ -1,4 +1,5 @@
 import React from "react";
+import Router from "next/router";
 
 export default function Iframe(props) {
   let message = props.message;
@@ -66,15 +67,32 @@ export default function Iframe(props) {
             </button>
           </span>
         </div>
-        <div className="flex justify-center m-5">
+        <div className="text-center m-5">
           {!generating ? (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: message.indexOf("<") != -1 ? message : "",
-              }}
-            />
+            <>
+              <div
+                className="flex justify-center"
+                dangerouslySetInnerHTML={{
+                  __html: message.indexOf("<") != -1 ? message : "",
+                }}
+              />
+              {message.indexOf("<") != -1 ? (
+                <div className="my-8">
+                  <button
+                    onClick={() => Router.push("/myList")}
+                    className="px-8 py-2 bg-primary-variant-orange text-white font-semibold hover:bg-amber-400"
+                  >
+                    ほかのユーザーのマイリスト
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
           ) : (
-            <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
+            <div className="flex justify-center">
+              <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
+            </div>
           )}
         </div>
       </div>
