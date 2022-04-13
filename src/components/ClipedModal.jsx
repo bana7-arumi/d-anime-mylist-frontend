@@ -49,7 +49,7 @@ export default function ClipedModal(props) {
                 <div className="flex justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-32 w-32 text-primary-orange"
+                    className="h-32 w-32 text-green-500"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -63,11 +63,10 @@ export default function ClipedModal(props) {
                   </svg>
                 </div>
               </Dialog.Title>
-              <div className="mt-2">
+              <div className="mt-2 text-center">
+                <h4 className="text-2xl text-gray-500 mb-3">コピーしました</h4>
                 <p className="text-sm text-gray-500">
-                  Paste this code directly into the HTML portion of your site,
-                  and you'll be good to go. Need more info? Check out our
-                  developer docs.{" "}
+                  このコードをあなたのサイトのHTML部分に直接貼り付けてください。
                 </p>
               </div>
             </div>
