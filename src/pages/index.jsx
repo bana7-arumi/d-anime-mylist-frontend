@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import Head from "next/head";
 import Iframe from "../components/Iframe";
 import Header from "../components/Header";
 import axios from "../utils/axios";
@@ -71,70 +72,76 @@ export default function Home() {
   }, [mylisturl]);
 
   return (
-    <div>
-      <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Header setMylistUrl={setMylistUrl} />
-      <div className="flex justify-center">埋め込みオプションを設定</div>
+    <>
+      <Head>
+        <title>d anime MyList</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div>
+        <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Header setMylistUrl={setMylistUrl} />
+        <div className="flex justify-center">埋め込みオプションを設定</div>
 
-      <div className="container mx-auto px-4 flex justify-center">
-        <div className="block">
-          <div className="mt-2">
-            <div className="flex">
-              <Switch
-                checked={enabled}
-                onChange={() => setEnabled(!enabled)}
-                className={`${
-                  enabled ? "bg-blue-600" : "bg-gray-200"
-                } relative inline-flex items-center h-6 rounded-full w-11`}
-              >
-                <span className="sr-only">Enable notifications</span>
-                <span
+        <div className="container mx-auto px-4 flex justify-center">
+          <div className="block">
+            <div className="mt-2">
+              <div className="flex">
+                <Switch
+                  checked={enabled}
+                  onChange={() => setEnabled(!enabled)}
                   className={`${
-                    enabled ? "translate-x-6" : "translate-x-1"
-                  } inline-block w-4 h-4 transform bg-white rounded-full`}
-                />
-              </Switch>
-              <p className="text-1xl mx-2">
-                {enabled ? <>枠線あり</> : <>枠線なし</>}
-              </p>
+                    enabled ? "bg-blue-600" : "bg-gray-200"
+                  } relative inline-flex items-center h-6 rounded-full w-11`}
+                >
+                  <span className="sr-only">Enable notifications</span>
+                  <span
+                    className={`${
+                      enabled ? "translate-x-6" : "translate-x-1"
+                    } inline-block w-4 h-4 transform bg-white rounded-full`}
+                  />
+                </Switch>
+                <p className="text-1xl mx-2">
+                  {enabled ? <>枠線あり</> : <>枠線なし</>}
+                </p>
+              </div>
+              <label className="block mt-4">
+                <span className="text-gray-700">横幅を選択する</span>
+                <select className="form-select mt-1 block w-full">
+                  <option onClick={() => setHeight(500)}>指定なし</option>
+                  <option onClick={() => setWidth(500)}>500</option>
+                  <option onClick={() => setWidth(400)}>400</option>
+                  <option onClick={() => setWidth(300)}>300</option>
+                </select>
+              </label>
+              <label className="block mt-4">
+                <span className="text-gray-700">縦幅を選択する</span>
+                <select className="form-select mt-1 block w-full">
+                  <option onClick={() => setHeight(300)}>指定なし</option>
+                  <option onClick={() => setHeight(500)}>500</option>
+                  <option onClick={() => setHeight(400)}>400</option>
+                  <option onClick={() => setHeight(300)}>300</option>
+                </select>
+              </label>
             </div>
-            <label className="block mt-4">
-              <span className="text-gray-700">横幅を選択する</span>
-              <select className="form-select mt-1 block w-full">
-                <option onClick={() => setHeight(500)}>指定なし</option>
-                <option onClick={() => setWidth(500)}>500</option>
-                <option onClick={() => setWidth(400)}>400</option>
-                <option onClick={() => setWidth(300)}>300</option>
-              </select>
-            </label>
-            <label className="block mt-4">
-              <span className="text-gray-700">縦幅を選択する</span>
-              <select className="form-select mt-1 block w-full">
-                <option onClick={() => setHeight(300)}>指定なし</option>
-                <option onClick={() => setHeight(500)}>500</option>
-                <option onClick={() => setHeight(400)}>400</option>
-                <option onClick={() => setHeight(300)}>300</option>
-              </select>
-            </label>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="shadow-xs">
+            {
+              <Iframe
+                mylistId={mylistId}
+                width={width}
+                height={height}
+                border={enabled}
+                message={message}
+                uri={uri}
+                generated={generated}
+                setIsOpen={setIsOpen}
+              />
+            }
           </div>
         </div>
       </div>
-      <div className="relative">
-        <div className="shadow-xs">
-          {
-            <Iframe
-              mylistId={mylistId}
-              width={width}
-              height={height}
-              border={enabled}
-              message={message}
-              uri={uri}
-              generated={generated}
-              setIsOpen={setIsOpen}
-            />
-          }
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
