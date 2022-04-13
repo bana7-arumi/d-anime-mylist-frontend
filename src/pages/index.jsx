@@ -12,8 +12,8 @@ import ClipedModal from "../components/ClipedModal";
 export default function Home() {
   const [mylisturl, setMylistUrl] = useState("");
   const [mylistId, setMylistId] = useState("");
-  const [width, setWidth] = useState(500);
-  const [height, setHeight] = useState(300);
+  const [width, setWidth] = useState(600);
+  const [height, setHeight] = useState(800);
   const [message, setMessage] = useState("");
   const [uri, setUri] = useState("");
   const [generating, setGenerating] = useState(Boolean);
@@ -150,7 +150,7 @@ export default function Home() {
                         type="number"
                         className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
                         placeholder="横幅(px)"
-                        defaultValue={300}
+                        defaultValue={width}
                         onChange={(e) => setWidth(e.target.value)}
                       />
                     </div>
@@ -159,7 +159,7 @@ export default function Home() {
                       <input
                         type="number"
                         className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
-                        defaultValue={500}
+                        defaultValue={height}
                         placeholder="縦幅(px)"
                         onChange={(e) => setHeight(e.target.value)}
                       />
