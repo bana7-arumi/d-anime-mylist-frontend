@@ -5,7 +5,7 @@ import deteformat from "../utils/deteformat";
 export default function mylistCard(props) {
   const animeDataPerPage = 4;
   return (
-    <div className={props.className}>
+    <div>
       <a href={`/myList/${props.id}`}>
         <div className="rounded overflow-hidden border w-full bg-white hover:bg-gray-100">
           <div className="grid grid-cols-2">
@@ -18,6 +18,7 @@ export default function mylistCard(props) {
                     alt={data.title}
                     width={200}
                     height={100}
+                    layout="responsive"
                   />
                 )
             )}
@@ -39,7 +40,9 @@ export default function mylistCard(props) {
                 {props.mylist.map(
                   (data, index) =>
                     index < animeDataPerPage && (
-                      <span key={index}className="font-medium mr-5">{data.title}</span>
+                      <span key={index} className="font-medium mr-5">
+                        {data.title}
+                      </span>
                     )
                 )}
                 {props.mylist.length > animeDataPerPage && <>...</>}
