@@ -11,7 +11,7 @@ export default function Home() {
   const [mylistId, setMylistId] = useState("");
   const [width, setWidth] = useState(500);
   const [height, setHeight] = useState(300);
-  const [message, setMessage] = useState("埋め込みボックスを生成する");
+  const [message, setMessage] = useState("");
   const [uri, setUri] = useState("");
   const [generated, setGenerated] = useState(Boolean);
   const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +19,14 @@ export default function Home() {
 
   useEffect(() => {
     console.log("called");
+    if (mylisturl == "") {
+      setMessage("URLを入力してください");
+    } else {
+      setMessage("埋め込みボックスを生成中...");
+    }
     setGenerated(true);
     (async () => {
       setUri(new URL(window.location.href));
-      setMessage("埋め込みボックスを生成中");
       const headers = {
         accept: "application/json",
         "Content-Type": "application/json",
@@ -65,10 +69,6 @@ export default function Home() {
       }
     })();
   }, [mylisturl]);
-
-  useEffect(() => {
-    setMessage("埋め込みボックスを生成する");
-  }, []);
 
   return (
     <div>
