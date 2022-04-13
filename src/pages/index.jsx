@@ -5,6 +5,8 @@ import Header from "../components/Header";
 import axios from "../utils/axios";
 import { Switch } from "@headlessui/react";
 
+import makeIframe from "../utils/makeIframe";
+
 import ClipedModal from "../components/ClipedModal";
 
 export default function Home() {
@@ -14,7 +16,7 @@ export default function Home() {
   const [height, setHeight] = useState(300);
   const [message, setMessage] = useState("");
   const [uri, setUri] = useState("");
-  const [generated, setGenerated] = useState(Boolean);
+  const [generating, setGenerating] = useState(Boolean);
   const [isOpen, setIsOpen] = useState(false);
   const [enabled, setEnabled] = useState(true);
 
@@ -24,8 +26,8 @@ export default function Home() {
       setMessage("URLを入力してください");
     } else {
       setMessage("埋め込みボックスを生成中...");
+      setGenerating(true);
     }
-    setGenerated(true);
     (async () => {
       setUri(new URL(window.location.href));
       const headers = {
@@ -44,8 +46,16 @@ export default function Home() {
           .then((res) => {
             setMylistId(res.data.mylist_id);
             console.log(res.data.mylist_id);
-            setMessage(mylistId);
-            setGenerated(false);
+            const host = uri.protocol + "//" + uri.host;
+            const iframeHTML = makeIframe(
+              host,
+              res.data.mylist_id,
+              width,
+              height,
+              enabled
+            );
+            setMessage(iframeHTML);
+            setGenerating(false);
           });
       } catch (err) {
         switch (err.response?.status) {
@@ -62,7 +72,16 @@ export default function Home() {
               .then((res) => {
                 setMylistId(res.data.mylist_id);
                 console.log(res.data.mylist_id);
-                setGenerated(false);
+                setGenerating(false);
+                const host = uri.protocol + "//" + uri.host;
+                const iframeHTML = makeIframe(
+                  host,
+                  res.data.mylist_id,
+                  width,
+                  height,
+                  enabled
+                );
+                setMessage(iframeHTML);
               });
           default:
             console.log(err);
@@ -70,6 +89,21 @@ export default function Home() {
       }
     })();
   }, [mylisturl]);
+
+  useEffect(() => {
+    if (mylisturl == "") {
+      setMessage("URLを入力してください");
+    } else {
+      const iframeHTML = makeIframe(
+        new URL(window.location.href),
+        mylistId,
+        width,
+        height,
+        enabled
+      );
+      setMessage(iframeHTML);
+    }
+  }, [width, height, enabled]);
 
   return (
     <>
@@ -106,20 +140,28 @@ export default function Home() {
               </div>
               <label className="block mt-4">
                 <span className="text-gray-700">横幅を選択する</span>
-                <select className="form-select mt-1 block w-full">
-                  <option onClick={() => setHeight(500)}>指定なし</option>
-                  <option onClick={() => setWidth(500)}>500</option>
-                  <option onClick={() => setWidth(400)}>400</option>
-                  <option onClick={() => setWidth(300)}>300</option>
+                <select
+                  value={width}
+                  onChange={(e) => setWidth(e.target.value)}
+                  className="form-select mt-1 block w-full"
+                >
+                  <option value={500}>指定なし</option>
+                  <option value={500}>500</option>
+                  <option value={400}>400</option>
+                  <option value={300}>300</option>
                 </select>
               </label>
               <label className="block mt-4">
                 <span className="text-gray-700">縦幅を選択する</span>
-                <select className="form-select mt-1 block w-full">
-                  <option onClick={() => setHeight(300)}>指定なし</option>
-                  <option onClick={() => setHeight(500)}>500</option>
-                  <option onClick={() => setHeight(400)}>400</option>
-                  <option onClick={() => setHeight(300)}>300</option>
+                <select
+                  value={height}
+                  onChange={(e) => setHeight(e.target.value)}
+                  className="form-select mt-1 block w-full"
+                >
+                  <option value={300}>指定なし</option>
+                  <option value={500}>500</option>
+                  <option value={400}>400</option>
+                  <option value={300}>300</option>
                 </select>
               </label>
             </div>
@@ -127,18 +169,16 @@ export default function Home() {
         </div>
         <div className="relative">
           <div className="shadow-xs">
-            {
-              <Iframe
-                mylistId={mylistId}
-                width={width}
-                height={height}
-                border={enabled}
-                message={message}
-                uri={uri}
-                generated={generated}
-                setIsOpen={setIsOpen}
-              />
-            }
+            <Iframe
+              mylistId={mylistId}
+              width={width}
+              height={height}
+              border={enabled}
+              message={message}
+              uri={uri}
+              generating={generating}
+              setIsOpen={setIsOpen}
+            />
           </div>
         </div>
       </div>
