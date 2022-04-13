@@ -82,6 +82,10 @@ export default function Home() {
                   enabled
                 );
                 setMessage(iframeHTML);
+              })
+              .catch((e) => {
+                setMessage("URLに誤りがあります");
+                setGenerating(false);
               });
           default:
             console.log(err);
@@ -114,56 +118,55 @@ export default function Home() {
       <div>
         <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
         <Header setMylistUrl={setMylistUrl} />
-        <div className="flex justify-center">埋め込みオプションを設定</div>
-
-        <div className="container mx-auto px-4 flex justify-center">
-          <div className="block">
-            <div className="mt-2">
-              <div className="flex">
-                <Switch
-                  checked={enabled}
-                  onChange={() => setEnabled(!enabled)}
-                  className={`${
-                    enabled ? "bg-blue-600" : "bg-gray-200"
-                  } relative inline-flex items-center h-6 rounded-full w-11`}
-                >
-                  <span className="sr-only">Enable notifications</span>
-                  <span
-                    className={`${
-                      enabled ? "translate-x-6" : "translate-x-1"
-                    } inline-block w-4 h-4 transform bg-white rounded-full`}
-                  />
-                </Switch>
-                <p className="text-1xl mx-2">
-                  {enabled ? <>枠線あり</> : <>枠線なし</>}
-                </p>
+        <div className="flex justify-center items-center mt-3">
+          <div className="p-4 w-1/3 border-solid border-2 border-bg-gray-200 rounded-md">
+            <div className="flex justify-center">埋め込みオプションを設定</div>
+            <div className="container mx-auto px-4 flex justify-center">
+              <div className="block">
+                <div className="mt-2">
+                  <div className="flex my-3">
+                    <Switch
+                      checked={enabled}
+                      onChange={() => setEnabled(!enabled)}
+                      className={`${
+                        enabled ? "bg-blue-600" : "bg-gray-200"
+                      } relative inline-flex items-center h-6 rounded-full w-11`}
+                    >
+                      <span className="sr-only">Enable notifications</span>
+                      <span
+                        className={`${
+                          enabled ? "translate-x-6" : "translate-x-1"
+                        } inline-block w-4 h-4 transform bg-white rounded-full`}
+                      />
+                    </Switch>
+                    <p className="text-1xl mx-2">
+                      {enabled ? <>枠線あり</> : <>枠線なし</>}
+                    </p>
+                  </div>
+                  <div className="flex mt-3">
+                    <div className="mr-1">
+                      <p>横(px)</p>
+                      <input
+                        type="number"
+                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
+                        placeholder="横幅(px)"
+                        defaultValue={300}
+                        onChange={(e) => setWidth(e.target.value)}
+                      />
+                    </div>
+                    <div className="ml-1">
+                      <p>縦(px)</p>
+                      <input
+                        type="number"
+                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
+                        defaultValue={500}
+                        placeholder="縦幅(px)"
+                        onChange={(e) => setHeight(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <label className="block mt-4">
-                <span className="text-gray-700">横幅を選択する</span>
-                <select
-                  value={width}
-                  onChange={(e) => setWidth(e.target.value)}
-                  className="form-select mt-1 block w-full"
-                >
-                  <option value={500}>指定なし</option>
-                  <option value={500}>500</option>
-                  <option value={400}>400</option>
-                  <option value={300}>300</option>
-                </select>
-              </label>
-              <label className="block mt-4">
-                <span className="text-gray-700">縦幅を選択する</span>
-                <select
-                  value={height}
-                  onChange={(e) => setHeight(e.target.value)}
-                  className="form-select mt-1 block w-full"
-                >
-                  <option value={300}>指定なし</option>
-                  <option value={500}>500</option>
-                  <option value={400}>400</option>
-                  <option value={300}>300</option>
-                </select>
-              </label>
             </div>
           </div>
         </div>
