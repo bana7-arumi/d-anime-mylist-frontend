@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const myAxios = axios.create({
-  baseURL: process.env.BASS_URL ?? "http://localhost:80",
+  baseURL: "http://api.d-anime-mylist.com"
 });
 
 export default myAxios;
