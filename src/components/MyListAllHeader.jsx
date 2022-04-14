@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "./LogoIcon";
+// import Logo from "./LogoIcon";
 
 export default function myListAllHeader() {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-primary-orange p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <div className="mr-4">
-          <Logo width={50} height={50} />
+          {/* <Logo width={50} height={50} /> */}
         </div>
         <span className="font-semibold text-xl tracking-tight">
           d anime MyList
