@@ -16,6 +16,7 @@ export default function MylistId() {
   const [mylistList, setMylistList] = useState([]);
   const [animeInfo, setAnimeInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [selectIndex, setSelectIndex] = useState(-1);
 
   useEffect(() => {
     (async () => {
@@ -37,17 +38,20 @@ export default function MylistId() {
     })();
   }, [id]);
 
-  function ClickAct(index) {
-    setAnimeInfo(mylistList[index]);
-  }
-
   const animeList = (
     <tbody>
       {mylistList.map((data, index) => (
         <tr
           key={index}
-          className="an bi d7 cs dk dl"
-          onClick={() => ClickAct(index)}
+          className={
+            index + 1 == selectIndex
+              ? "an bi d7 cs dk dl e3"
+              : "an bi d7 cs dk dl"
+          }
+          onClick={() => {
+            setSelectIndex(index + 1);
+            setAnimeInfo(mylistList[index]);
+          }}
         >
           {/* index番号 */}
           <td className="ae dm d9 dn do dp">{index + 1}</td>

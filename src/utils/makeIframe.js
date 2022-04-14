@@ -1,6 +1,8 @@
 const makeIframe = (host, id, width, height, border) => {
   return `<iframe
-    style="border-radius:12px;${border && "border: 2px #DA5019 solid;"}"
+    style="border-radius:12px;${
+      border ? "border: 2px #DA5019 solid;" : "border: none;"
+    }"
     src="${host}/myList/${id}"
     width="${width}"
     height="${height}"

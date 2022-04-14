@@ -1,11 +1,18 @@
-import makeIframe from "../utils/makeIframe";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Router from "next/router";
 
 export default function Iframe(props) {
+  let message = props.message;
+  const generating = props.generating;
+
+  function openModal() {
+    props.setIsOpen(true);
+  }
   function copyTextToClipboard() {
-    navigator.clipboard.writeText(Iframe).then(
+    navigator.clipboard.writeText(message).then(
       function () {
-        window.alert("Copied!");
+        // window.alert("Copied!");
+        openModal();
       },
       function (err) {
         console.error("Async: Could not copy text: ", err);
@@ -13,44 +20,36 @@ export default function Iframe(props) {
     );
   }
 
-  var uri = props.uri;
-  // URL (http://localhost, https://hoge.com)
-  const host = uri.protocol + "//" + uri.host;
-  // データベースに存在しているIDを指定する string
-  const id = props.mylistId ? props.mylistId : "";
-  // 埋め込みたいiframeの縦横のサイズ number
-  const width = props.width;
-  const height = props.height;
-  // iframeにオレンジの枠を付けるか bool
-  const border = props.border;
-  const IframeUrl = makeIframe(host, id, width, height, border);
-  const message = props.message;
-  const flag = props.flag;
-
   return (
     <div>
       <div className="m-5">
         <div
           className={
-            flag ? "cursor-wait flex justify-center" : "flex justify-center"
+            generating || message.indexOf("<") == -1
+              ? "cursor-wait flex justify-center"
+              : "flex justify-center"
           }
         >
           <input
             className={
-              flag
+              generating || message.indexOf("<") == -1
                 ? "pointer-events-none shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
                 : "shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
             }
-            placeholder={flag ? message : IframeUrl}
+            placeholder={message}
             onClick={() => {
-              copyTextToClipboard(IframeUrl);
+              copyTextToClipboard();
             }}
           />
           <span className="shadow-inner inline-flex items-center px-3 bg-primary-orange rounded-r-lg border border-r-0 hover:bg-primary-variant-orange">
             <button
-              className={flag ? "pointer-events-none cursor-wait" : ""}
+              className={
+                generating || message.indexOf("<") == -1
+                  ? "pointer-events-none cursor-wait"
+                  : ""
+              }
               onClick={() => {
-                copyTextToClipboard(Iframe);
+                copyTextToClipboard();
               }}
             >
               <svg
@@ -68,8 +67,33 @@ export default function Iframe(props) {
             </button>
           </span>
         </div>
-        <div className="flex justify-center">
-          {!flag && <div dangerouslySetInnerHTML={{ __html: IframeUrl }} />}
+        <div className="text-center m-5">
+          {!generating ? (
+            <>
+              <div
+                className="flex justify-center"
+                dangerouslySetInnerHTML={{
+                  __html: message.indexOf("<") != -1 ? message : "",
+                }}
+              />
+              {message.indexOf("<") != -1 ? (
+                <div className="my-8">
+                  <button
+                    onClick={() => Router.push("/myList")}
+                    className="px-8 py-2 bg-primary-variant-orange text-white font-semibold hover:bg-amber-400"
+                  >
+                    ほかのユーザーのマイリスト
+                  </button>
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            <div className="flex justify-center">
+              <div className="animate-spin h-20 w-20 border-4 border-orange-600 rounded-full border-t-transparent"></div>
+            </div>
+          )}
         </div>
       </div>
     </div>
