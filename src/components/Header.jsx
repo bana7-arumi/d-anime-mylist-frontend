@@ -1,11 +1,16 @@
-// import LogoIcon from "./LogoIcon";
+import Image from "next/image";
 
 export default function Header(props) {
   return (
     <div className="p-8 bg-primary-orange shadow-md">
       <div>
         <div className="flex justify-end">
-          {/* <LogoIcon width={180} height={180} /> */}
+          <Image
+            src="/images/LogoIcon.png"
+            width={180}
+            height={180}
+            alt="logo"
+          />
         </div>
         <div className="flex justify-center">
           <h1 className="my-4 mx-16 text-white text-5xl font-bold">
