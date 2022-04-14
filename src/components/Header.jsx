@@ -9,7 +9,7 @@ export default function Header(props) {
         </div>
         <div className="flex justify-center">
           <h1 className="my-4 mx-16 text-white text-5xl font-bold">
-            Let's share your MyList
+            Lets share your MyList
           </h1>
         </div>
         <div className="flex justify-center">
