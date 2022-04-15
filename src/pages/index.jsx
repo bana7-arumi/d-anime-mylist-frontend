@@ -123,7 +123,7 @@ export default function Home() {
             <div className="md:flex justify-center">
               埋め込みオプションを設定
             </div>
-            <div className="mdcontainer mx-auto px-4 md:flex justify-center">
+            <div className="container mx-auto px-4 md:flex justify-center">
               <div className="block">
                 <div className="md:mt-2">
                   <div className="md:flex my-3">
@@ -160,7 +160,7 @@ export default function Home() {
                       <p>縦(px)</p>
                       <input
                         type="number"
-                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
+                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:bg-gray-200"
                         defaultValue={height}
                         placeholder="縦幅(px)"
                         onChange={(e) => setHeight(e.target.value)}
