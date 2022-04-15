@@ -33,8 +33,8 @@ export default function Iframe(props) {
           <input
             className={
               generating || message.indexOf("<") == -1
-                ? "pointer-events-none shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
-                : "shadow-inner appearance-none border w-1/2 py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
+                ? "pointer-events-none shadow-inner appearance-none border lg:w-1/2 w-full py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
+                : "shadow-inner appearance-none border lg:w-1/2 w-full py-4 px-4 text-gray-700 leading-tight rounded-l-lg focus:outline-none hover:bg-gray-200"
             }
             placeholder={message}
             onClick={() => {
