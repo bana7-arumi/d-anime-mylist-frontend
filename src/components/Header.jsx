@@ -4,7 +4,7 @@ export default function Header(props) {
   return (
     <div className="p-8 bg-primary-orange shadow-md">
       <div>
-        <div className="flex justify-end">
+        <div className="flex justify-end md:w-full w-16">
           <Image
             src="/images/LogoIcon.png"
             width={180}
@@ -18,7 +18,7 @@ export default function Header(props) {
           </h1>
         </div>
         <div className="md:flex justify-center">
-          <p className="my-2 mx-4 text-secondary-cyan text-small font-bold">
+          <p className="md:my-2 md:mx-4 text-secondary-cyan md:text-small font-bold">
             あなたのマイリストをあらゆるメディアに埋め込みましょう
           </p>
         </div>
