@@ -118,13 +118,15 @@ export default function Home() {
       <div>
         <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
         <Header setMylistUrl={setMylistUrl} />
-        <div className="flex justify-center items-center mt-3">
-          <div className="p-4 w-1/3 border-solid border-2 border-bg-gray-200 rounded-md">
-            <div className="flex justify-center">埋め込みオプションを設定</div>
-            <div className="container mx-auto px-4 flex justify-center">
+        <div className="md:flex justify-center items-center mt-3">
+          <div className="p-4 md:w-1/3 border-solid border-2 border-bg-gray-200 rounded-md">
+            <div className="md:flex justify-center">
+              埋め込みオプションを設定
+            </div>
+            <div className="mdcontainer mx-auto px-4 md:flex justify-center">
               <div className="block">
-                <div className="mt-2">
-                  <div className="flex my-3">
+                <div className="md:mt-2">
+                  <div className="md:flex my-3">
                     <Switch
                       checked={enabled}
                       onChange={() => setEnabled(!enabled)}
@@ -143,18 +145,18 @@ export default function Home() {
                       {enabled ? <>枠線あり</> : <>枠線なし</>}
                     </p>
                   </div>
-                  <div className="flex mt-3">
-                    <div className="mr-1">
+                  <div className="md:flex mt-3">
+                    <div className="md:mr-1">
                       <p>横(px)</p>
                       <input
                         type="number"
-                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  hover:bg-gray-200"
+                        className="cursor-pointer shadow appearance-none border rounded-lg py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline hover:bg-gray-200"
                         placeholder="横幅(px)"
                         defaultValue={width}
                         onChange={(e) => setWidth(e.target.value)}
                       />
                     </div>
-                    <div className="ml-1">
+                    <div className="md:ml-1">
                       <p>縦(px)</p>
                       <input
                         type="number"
