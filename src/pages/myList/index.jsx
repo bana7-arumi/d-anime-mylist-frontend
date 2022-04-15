@@ -53,7 +53,7 @@ export default function MyListAll() {
             </div>
           </>
         )}
-        <div className="grid grid-cols-1 lg:px-8 md:px-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 lg:px-8 lg:px-1 lg:grid-cols-3">
           {allMylistAnimeData.length == allMylist.length &&
             allMylistAnimeData.map((data, index) => (
               <>

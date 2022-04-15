@@ -118,15 +118,15 @@ export default function Home() {
       <div>
         <ClipedModal isOpen={isOpen} setIsOpen={setIsOpen} />
         <Header setMylistUrl={setMylistUrl} />
-        <div className="md:flex justify-center items-center mt-3">
-          <div className="p-4 md:w-1/3 border-solid border-2 border-bg-gray-200 rounded-md">
-            <div className="md:flex justify-center">
+        <div className="lg:flex justify-center items-center mt-3">
+          <div className="p-4 lg:w-1/3 border-solid border-2 border-bg-gray-200 rounded-md">
+            <div className="lg:flex justify-center">
               埋め込みオプションを設定
             </div>
-            <div className="container mx-auto px-4 md:flex justify-center">
+            <div className="container mx-auto px-4 lg:flex justify-center">
               <div className="block">
-                <div className="md:mt-2">
-                  <div className="md:flex my-3">
+                <div className="lg:mt-2">
+                  <div className="lg:flex my-3">
                     <Switch
                       checked={enabled}
                       onChange={() => setEnabled(!enabled)}
@@ -145,8 +145,8 @@ export default function Home() {
                       {enabled ? <>枠線あり</> : <>枠線なし</>}
                     </p>
                   </div>
-                  <div className="md:flex mt-3">
-                    <div className="md:mr-1">
+                  <div className="lg:flex mt-3">
+                    <div className="lg:mr-1">
                       <p>横(px)</p>
                       <input
                         type="number"
@@ -156,7 +156,7 @@ export default function Home() {
                         onChange={(e) => setWidth(e.target.value)}
                       />
                     </div>
-                    <div className="md:ml-1">
+                    <div className="lg:ml-1">
                       <p>縦(px)</p>
                       <input
                         type="number"
