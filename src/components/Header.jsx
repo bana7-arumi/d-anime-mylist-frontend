@@ -13,12 +13,12 @@ export default function Header(props) {
           />
         </div>
         <div className="lg:flex justify-center">
-          <h1 className="my-4 mx-16 text-white text-5xl font-bold">
+          <h1 className="lg:my-4 lg:mx-16 text-white lg:text-5xl text-2xl font-bold">
             Lets share your MyList
           </h1>
         </div>
         <div className="lg:flex justify-center">
-          <p className="lg:my-2 lg:mx-4 text-secondary-cyan lg:text-small font-bold">
+          <p className="my-2 lg:mx-4 text-secondary-cyan font-bold">
             あなたのマイリストをあらゆるメディアに埋め込みましょう
           </p>
         </div>
