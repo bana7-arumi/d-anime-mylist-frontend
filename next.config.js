@@ -8,6 +8,6 @@ module.exports = {
     outputStandalone: true,
   },
   images: {
-    domains: ["cs1.anime.dmkt-sp.jp"],
+    domains: ["cs1.animestore.docomo.ne.jp"],
   },
 };
