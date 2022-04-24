@@ -48,3 +48,4 @@ docker build -t d-anime-mylist-frontend .
 ```bash
 docker run -p 5000:5000 d-anime-mylist-frontend
 ```
+ 
