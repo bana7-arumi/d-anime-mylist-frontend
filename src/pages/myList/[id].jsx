@@ -24,15 +24,16 @@ export default function MylistId() {
         try {
           const res = await axios.get(`/my-list?id=${id}`);
           console.log(res.data);
+          if (res.data.detail == "unknown mylist. you must register.") {
+            router.push("/404");
+            return;
+          }
           console.log(res.data.mylist);
           setMylistList(res.data.mylist);
           setAnimeInfo(res.data.mylist[0]);
           setIsLoading(false);
         } catch (err) {
-          switch (err.response?.status) {
-            case 402:
-              router.push("/404");
-          }
+          console.log(err);
         }
       }
     })();
